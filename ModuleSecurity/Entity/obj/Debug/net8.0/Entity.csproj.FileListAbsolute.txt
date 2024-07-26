@@ -1,0 +1,5 @@
+C:\Users\SENA\Documents\CsSharp VSG\ModuleSecurity\Enity\obj\Debug\net8.0\Entity.csproj.AssemblyReference.cache
+C:\Users\SENA\Documents\CsSharp VSG\ModuleSecurity\Enity\obj\Debug\net8.0\Entity.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\SENA\Documents\CsSharp VSG\ModuleSecurity\Enity\obj\Debug\net8.0\Entity.AssemblyInfoInputs.cache
+C:\Users\SENA\Documents\CsSharp VSG\ModuleSecurity\Enity\obj\Debug\net8.0\Entity.AssemblyInfo.cs
+C:\Users\SENA\Documents\CsSharp VSG\ModuleSecurity\Enity\obj\Debug\net8.0\Entity.csproj.CoreCompileInputs.cache
