@@ -8,6 +8,5 @@ namespace Entity.Model
 {
     internal class GenericConfig
     {
-
     }
 }

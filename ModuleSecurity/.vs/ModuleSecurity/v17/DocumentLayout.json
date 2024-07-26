@@ -3,6 +3,14 @@
   "WorkspaceRootPath": "C:\\Users\\SENA\\Documents\\CsSharp VSG\\ModuleSecurity\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\SENA\\Documents\\CsSharp VSG\\ModuleSecurity\\Entity\\Class1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Entity\\Class1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{942C804D-3862-44B6-B70F-2A61FC07F5A0}|Data\\Data.csproj|c:\\users\\sena\\documents\\cssharp vsg\\modulesecurity\\data\\data.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{942C804D-3862-44B6-B70F-2A61FC07F5A0}|Data\\Data.csproj|solutionrelative:data\\data.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{67C085F1-376F-41D5-AD48-C8B92EC7BA67}|Enity\\Entity.csproj|c:\\users\\sena\\documents\\cssharp vsg\\modulesecurity\\enity\\context\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{67C085F1-376F-41D5-AD48-C8B92EC7BA67}|Enity\\Entity.csproj|solutionrelative:enity\\context\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
@@ -19,12 +27,37 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "Class1.cs",
+              "DocumentMoniker": "C:\\Users\\SENA\\Documents\\CsSharp VSG\\ModuleSecurity\\Entity\\Class1.cs",
+              "RelativeDocumentMoniker": "Entity\\Class1.cs",
+              "ToolTip": "C:\\Users\\SENA\\Documents\\CsSharp VSG\\ModuleSecurity\\Entity\\Class1.cs",
+              "RelativeToolTip": "Entity\\Class1.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAYAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-26T22:36:04.509Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Data.csproj",
+              "DocumentMoniker": "C:\\Users\\SENA\\Documents\\CsSharp VSG\\ModuleSecurity\\Data\\Data.csproj",
+              "RelativeDocumentMoniker": "Data\\Data.csproj",
+              "ToolTip": "C:\\Users\\SENA\\Documents\\CsSharp VSG\\ModuleSecurity\\Data\\Data.csproj",
+              "RelativeToolTip": "Data\\Data.csproj",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2024-07-26T22:30:34.245Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
               "Title": "ApplicationDBContext.cs",
               "DocumentMoniker": "C:\\Users\\SENA\\Documents\\CsSharp VSG\\ModuleSecurity\\Enity\\Context\\ApplicationDBContext.cs",
               "RelativeDocumentMoniker": "Enity\\Context\\ApplicationDBContext.cs",
               "ToolTip": "C:\\Users\\SENA\\Documents\\CsSharp VSG\\ModuleSecurity\\Enity\\Context\\ApplicationDBContext.cs",
               "RelativeToolTip": "Enity\\Context\\ApplicationDBContext.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAAAYAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-07-26T20:36:34.28Z",
               "EditorCaption": ""
