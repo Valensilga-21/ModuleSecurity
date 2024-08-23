@@ -1,10 +1,7 @@
 {
   "ExpandedNodes": [
     "",
-    "\\Data",
-    "\\Entity\\Model",
-    "\\Entity\\Model\\Security"
+    "\\Data"
   ],
-  "SelectedNode": "\\Entity",
   "PreviewInSolutionExplorer": false
 }
