@@ -13,7 +13,7 @@ namespace Entity.Model.Security
         public string Description { get; set; }
         public string CreateAt { set; get; }
         public string UpdateAt { set; get; }
-        public string DeleteAt { set; get; }
+        public DateTime DeleteAt { set; get; }
         public bool State {  get; set; }
 
     }

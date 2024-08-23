@@ -7,8 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Implements\" />
-    <Folder Include="Interfaces\" />
+    <ProjectReference Include="..\Enity\Entity.csproj" />
   </ItemGroup>
 
 </Project>

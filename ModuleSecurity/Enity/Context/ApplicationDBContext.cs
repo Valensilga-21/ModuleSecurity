@@ -70,6 +70,13 @@ namespace Entity.Context
         }
 
         public DbSet<Role> Roles => Set<Role>();
+        public DbSet<Model.Security.Module> Modules { get; set; }
+        public DbSet<Role> Role { get; set; }
+        public DbSet<RoleView> RoleViews { get; set; }
+        public DbSet<User> Users { get; set; }
+        public DbSet<UserRole> UserRoles { get; set; }
+        public DbSet<View> Views { get; set; }
+        public DbSet<Person> Persons { get; set; }
         public readonly struct DapperEFCoreCommand : IDisposable
         {
             public DapperEFCoreCommand(DbContext context, string text, object parameters, int? timeout, CommandType? type, CancellationToken ct)

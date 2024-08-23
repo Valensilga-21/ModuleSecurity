@@ -4,14 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Entity.Model.Security
+namespace Entity.Context
 {
-    public class UserRole
+    public class DataRoleViewData
     {
         public int Id { get; set; }
         public string CreateAt { get; set; }
-        public string UpdateAt { get; set; }
-        public DateTime DeleteAt { get; set; }
-        public string State { get; set; }
     }
 }
