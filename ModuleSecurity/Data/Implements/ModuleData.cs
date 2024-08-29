@@ -1,5 +1,6 @@
 ﻿using Data.Interfaces;
 using Entity.Context;
+using Entity.DTO;
 using Entity.Model.Security;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -29,10 +30,26 @@ namespace Data.Implements
             await context.SaveChangesAsync();
         }
 
+        public async Task<IEnumerable<DataSelectDto>> GetAllSelect()
+        {
+            var sql = @"SELECT Id AS TextoMostrar
+                        FROM Module
+                        WHERE Deleted_at IS NULL AND State = 1
+                        ORDER BY Id ASC";
+            return await context.QueryAsync<DataSelectDto>(sql);
+        }
+
         public async Task<Module> GetById(int id)
         {
-            var sql = @"SELECT * FROM Module WHERE Id = @Id ORDER BY Id ASC";
-            return await this.context.QueryFirstOrDefaultAsync<Module>(sql, new { Id = id });
+            try
+            {
+                var sql = @"SELECT * FROM Module WHERE Id = @Id ORDER BY Id ASC";
+                return await this.context.QueryFirstOrDefaultAsync<Module>(sql, new { Id = id });
+            }
+            catch (Exception)
+            {
+                throw;
+            }
         }
         public async Task<Module> Save(Module entity)
         {
@@ -40,15 +57,27 @@ namespace Data.Implements
             await context.SaveChangesAsync();
             return entity;
         }
-        public async Task<Module> Update(Module entity)
+        public async Task Update(Module entity)
         {
-            context.Modules.Add(entity);
+            context.Entry(entity).State = EntityState.Modified;
             await context.SaveChangesAsync();
-            return entity;
         }
+
+        /*
         public async Task<Module> GetByName(string description)
         {
             return await this.context.Modules.AsNoTracking().Where(item => item.Description == description).FirstOrDefaultAsync();
+        }*/
+
+        Task<Module> IModuleData.GetById(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public async Task<IEnumerable<Module>> GetAll()
+        {
+            var sql = @"SELECT * FROM Module ORDER BY Id ASC";
+            return await this.context.QueryAsync<Module>(sql);
         }
     }
 }

@@ -1,6 +1,7 @@
 ﻿
 using Data.Interfaces;
 using Entity.Context;
+using Entity.DTO;
 using Entity.Model.Security;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -30,10 +31,26 @@ namespace Data.Implements
             await context.SaveChangesAsync();
         }
 
+        public async Task<IEnumerable<DataSelectDto>> GetAllSelect()
+        {
+            var sql = @"SELECT Id, CONCAT(Name, ' - ', Description) AS TextoMostrar
+                        FROM View
+                        WHERE Deleted_at IS NULL AND State = 1
+                        ORDER BY Id ASC";
+            return await context.QueryAsync<DataSelectDto>(sql);
+        }
+
         public async Task<View> GetById(int id)
         {
-            var sql = @"SELECT * FROM ViewData WHERE Id = @Id ORDER BY Id ASC";
-            return await this.context.QueryFirstOrDefaultAsync<View>(sql, new { Id = id });
+            try
+            {
+                var sql = @"SELECT * FROM View WHERE Id = @Id ORDER BY Id ASC";
+                return await this.context.QueryFirstOrDefaultAsync<View>(sql, new { Id = id });
+            }
+            catch (Exception)
+            {
+                throw;
+            }
         }
         public async Task<View> Save(View entity)
         {
@@ -41,15 +58,20 @@ namespace Data.Implements
             await context.SaveChangesAsync();
             return entity;
         }
-        public async Task<View> Update(View entity)
+        public async Task Update(View entity)
         {
-            context.Views.Add(entity);
+            context.Entry(entity).State = EntityState.Modified;
             await context.SaveChangesAsync();
-            return entity;
         }
         public async Task<View> GetByName(string name)
         {
             return await this.context.Views.AsNoTracking().Where(item => item.Name == name).FirstOrDefaultAsync();
+        }
+
+        public async Task<IEnumerable<View>> GetAll()
+        {
+            var sql = @"SELECT * FROM View ORDER BY Id ASC";
+            return await this.context.QueryAsync<View>(sql);
         }
     }
 }

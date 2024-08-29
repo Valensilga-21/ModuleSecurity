@@ -1000,6 +1000,19 @@
           }
         }
       },
+      "Data/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v8.0",
+        "dependencies": {
+          "Entity": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/Data.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Data.dll": {}
+        }
+      },
       "Entity/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v8.0",
@@ -2790,6 +2803,11 @@
         "useSharedDesignerContext.txt"
       ]
     },
+    "Data/1.0.0": {
+      "type": "project",
+      "path": "../Data/Data.csproj",
+      "msbuildProject": "../Data/Data.csproj"
+    },
     "Entity/1.0.0": {
       "type": "project",
       "path": "../Enity/Entity.csproj",
@@ -2798,6 +2816,7 @@
   },
   "projectFileDependencyGroups": {
     "net8.0": [
+      "Data >= 1.0.0",
       "Entity >= 1.0.0"
     ]
   },
@@ -2834,6 +2853,9 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
+            "C:\\Users\\SENA\\Documents\\CsSharp VSG\\ModuleSecurity\\Data\\Data.csproj": {
+              "projectPath": "C:\\Users\\SENA\\Documents\\CsSharp VSG\\ModuleSecurity\\Data\\Data.csproj"
+            },
             "C:\\Users\\SENA\\Documents\\CsSharp VSG\\ModuleSecurity\\Enity\\Entity.csproj": {
               "projectPath": "C:\\Users\\SENA\\Documents\\CsSharp VSG\\ModuleSecurity\\Enity\\Entity.csproj"
             }
@@ -2873,13 +2895,5 @@
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.300/PortableRuntimeIdentifierGraph.json"
       }
     }
-  },
-  "logs": [
-    {
-      "code": "NU1900",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Error al obtener los datos de vulnerabilidad del paquete: No se puede cargar el índice de servicio del origen https://api.nuget.org/v3/index.json."
-    }
-  ]
+  }
 }

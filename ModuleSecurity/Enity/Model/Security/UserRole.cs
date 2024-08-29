@@ -12,6 +12,13 @@ namespace Entity.Model.Security
         public string CreateAt { get; set; }
         public string UpdateAt { get; set; }
         public DateTime DeleteAt { get; set; }
-        public string State { get; set; }
+        public bool State { get; set; }
+
+        public User idUser { get; set; }
+        public User User { get; set; }
+        public Role idRole { get; set; }
+
+        public Role Role { get; set; }
+
     }
 }

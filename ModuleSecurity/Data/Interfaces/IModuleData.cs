@@ -1,4 +1,5 @@
 ﻿
+using Entity.DTO;
 using Entity.Model.Security;
 
 namespace Data.Interfaces
@@ -6,12 +7,10 @@ namespace Data.Interfaces
     public interface IModuleData
     {
         public Task Delete(int id);
+        public Task<IEnumerable<Module>> GetAll();
+        public Task<IEnumerable<DataSelectDto>> GetAllSelect();
         public Task<Module> GetById(int id);
-
         public Task<Module> Save(Module entity);
-
-        public Task<Module> Update(Module entity);
-
-        public Task<Module> GetByName(string description);
+        public Task Update(Module entity);
     }
 }
