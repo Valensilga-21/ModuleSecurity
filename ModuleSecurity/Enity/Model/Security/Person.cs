@@ -10,7 +10,7 @@
         public string Type_document { get; set; }
         public string Document {  get; set; }
         public DateTime Birth_of_date { get; set; }
-        public string CreateAt {  get; set; }
+        public DateTime CreateAt {  get; set; }
         public string UpdateAt { get; set; }
         public DateTime DeleteAt { get; set; }
         public string Phone { get; set; }

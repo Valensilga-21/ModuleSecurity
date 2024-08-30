@@ -1,8 +1,7 @@
 ﻿using Business.Interfaces;
-using Data.Implements;
 using Data.Interfaces;
 using Entity.DTO;
-using System.Reflection;
+using Entity.Model.Security;
 
 namespace Business.Implemens
 {
@@ -10,7 +9,7 @@ namespace Business.Implemens
     {
         protected readonly IModuleData data;
 
-        public ModuleBusiness(IModuleData data)
+        public  ModuleBusiness(IModuleData data)
         {
             this.data = data;
         }
@@ -25,6 +24,7 @@ namespace Business.Implemens
             IEnumerable<Module> modules = await this.data.GetAll();
             var moduleDtos = modules.Select(module => new DataModuleDto
             {
+
                 Id = module.Id,
                 Description = module.Description,
                 State = module.State,
@@ -49,13 +49,17 @@ namespace Business.Implemens
             return moduleDto;
         }
 
-        public async Task<Module> Save(DataModuleDto entity)
+        public Task<DataModuleDto> GetByName(string name)
         {
-            Module module = new Module();
-            module.CreatedAt = DateTime.Now.AddHours(-5);
-            module = this.mapData(module, entity);
+            throw new NotImplementedException();
+        }
 
-            return await this.data.Save(module);
+        public Module mapData(Module module, DataModuleDto entity)
+        {
+            module.Id = entity.Id;
+            module.Description = entity.Description;
+            module.State = entity.State;
+            return module;
         }
 
         public async Task<Module> Save(DataModuleDto entity)
@@ -63,7 +67,6 @@ namespace Business.Implemens
             Module module = new Module();
             module.CreateAt = DateTime.Now.AddHours(-5);
             module = this.mapData(module, entity);
-            module.Module = null;
 
             return await this.data.Save(module);
         }
@@ -84,5 +87,4 @@ namespace Business.Implemens
             throw new NotImplementedException();
         }
     }
-}
 }

@@ -11,7 +11,7 @@ namespace Entity.Model.Security
         public int Id { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
-        public string CreateAt { set; get; }
+        public DateTime CreateAt { set; get; }
         public string UpdateAt { set; get; }
         public DateTime DeleteAt { set; get; }
         public bool State {  get; set; }

@@ -27,7 +27,6 @@ namespace Business.Implemens
                 Id = view.Id,
                 Name = view.Name,
                 Description = view.Description,
-                //Route = view.Route,
                 IdModule = view.IdModule,
                 State = view.State,
             });
