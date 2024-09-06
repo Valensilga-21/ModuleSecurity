@@ -4,20 +4,20 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="a142ec741d5a4feda563df4c5722fc8e" Name="Diagram1" >
-        <EntityTypeShape EntityType="Model1.Person" Width="1.5" PointX="1.5" PointY="2.25" />
-        <EntityTypeShape EntityType="Model1.User" Width="1.5" PointX="3.5" PointY="2.25" />
-        <EntityTypeShape EntityType="Model1.UserRole" Width="1.5" PointX="5.5" PointY="2.25" />
-        <EntityTypeShape EntityType="Model1.RoleView" Width="1.5" PointX="9.625" PointY="2.25" />
-        <EntityTypeShape EntityType="Model1.Role" Width="1.5" PointX="7.5" PointY="2.25" />
-        <EntityTypeShape EntityType="Model1.View" Width="1.5" PointX="11.625" PointY="2.25" />
-        <EntityTypeShape EntityType="Model1.Module" Width="1.5" PointX="13.75" PointY="2.25" />
-        <AssociationConnector Association="Model1.UserRoleUser" />
-        <AssociationConnector Association="Model1.PersonUser" />
-        <AssociationConnector Association="Model1.RoleUserRole" />
-        <AssociationConnector Association="Model1.RoleRoleView" />
-        <AssociationConnector Association="Model1.ViewModule" />
-        <AssociationConnector Association="Model1.RoleViewView" />
+      <Diagram DiagramId="b0133937b2ff411a85aa8e92b1131d3f" Name="Diagram1" >
+        <EntityTypeShape EntityType="DbModel.Person" Width="1.5" PointX="0.5" PointY="0.5" />
+        <EntityTypeShape EntityType="DbModel.User" Width="1.5" PointX="2.625" PointY="0.5" />
+        <EntityTypeShape EntityType="DbModel.UserRole" Width="1.5" PointX="4.875" PointY="0.5" />
+        <EntityTypeShape EntityType="DbModel.Role" Width="1.5" PointX="7" PointY="0.5" />
+        <EntityTypeShape EntityType="DbModel.RoleView" Width="1.5" PointX="9.375" PointY="0.5" />
+        <EntityTypeShape EntityType="DbModel.View" Width="1.5" PointX="11.75" PointY="0.5" />
+        <EntityTypeShape EntityType="DbModel.Module" Width="1.5" PointX="14.125" PointY="0.5" />
+        <AssociationConnector Association="DbModel.UserRoleUser" />
+        <AssociationConnector Association="DbModel.UserRoleRole" />
+        <AssociationConnector Association="DbModel.UserPerson" />
+        <AssociationConnector Association="DbModel.RoleViewRole" />
+        <AssociationConnector Association="DbModel.RoleViewView" />
+        <AssociationConnector Association="DbModel.ViewModule" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

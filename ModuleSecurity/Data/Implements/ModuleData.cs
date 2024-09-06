@@ -4,31 +4,32 @@ using Entity.DTO;
 using Entity.Model.Security;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
+using System.Data;
+using System.Linq.Expressions;
 
 namespace Data.Implements
 {
-    public class ModuleData : IModuleData
+        public class ModuleData : IModuleData
     {
-        private readonly ApplicationDBContext context;
-        protected readonly IConfiguration configuration;
+            private readonly ApplicationDBContext context;
+            protected readonly IConfiguration configuration;
 
-        public ModuleData(ApplicationDBContext context, IConfiguration configuration)
-        {
-            this.context = context;
-            this.configuration = configuration;
-        }
-
-        public async Task Delete(int id)
-        {
-            var entity = await GetById(id);
-            if (entity == null)
+            public ModuleData(ApplicationDBContext context, IConfiguration configuration)
             {
-                throw new Exception("Registro no encontrado");
+                this.context = context;
+                this.configuration = configuration;
             }
-            entity.DeleteAt = DateTime.Parse(DateTime.Today.ToString());
-            context.Modules.Update(entity);
-            await context.SaveChangesAsync();
-        }
+
+            public async Task Delete(int id)
+            {
+                var entity = await GetById(id);
+                if (entity == null)
+                    throw new Exception("Registro no encontrado");
+
+                entity.DeletedAt = DateTime.Parse(DateTime.Today.ToString());
+                context.Modules.Update(entity);
+                await context.SaveChangesAsync();
+            }
 
         public async Task<IEnumerable<DataSelectDto>> GetAllSelect()
         {
@@ -40,34 +41,36 @@ namespace Data.Implements
         }
 
         public async Task<Module> GetById(int id)
-        {
-            try
             {
-                var sql = @"SELECT * FROM Module WHERE Id = @Id ORDER BY Id ASC";
-                return await this.context.QueryFirstOrDefaultAsync<Module>(sql, new { Id = id });
+                try
+                {
+                    var sql = @"SELECT * FROM Module WHERE Id = @Id ORDER BY Id ASC";
+                    return await this.context.QueryFirstOrDefaultAsync<Module>(sql, new { Id = id });
+                }
+                catch (Exception)
+                {
+                    throw;
+                }
             }
-            catch (Exception)
-            {
-                throw;
-            }
-        }
-        public async Task<Module> Save(Module entity)
-        {
-            context.Modules.Add(entity);
-            await context.SaveChangesAsync();
-            return entity;
-        }
-        public async Task Update(Module entity)
-        {
-            context.Entry(entity).State = EntityState.Modified;
-            await context.SaveChangesAsync();
-        }
 
-        /*
-        public async Task<Module> GetByName(string description)
-        {
-            return await this.context.Modules.AsNoTracking().Where(item => item.Description == description).FirstOrDefaultAsync();
-        }*/
+            public async Task<Module> Save(Module entity)
+            {
+                context.Modules.Add(entity);
+                await context.SaveChangesAsync();
+                return entity;
+            }
+
+            public async Task Update(Module entity)
+            {
+                context.Entry(entity).State = EntityState.Modified;
+                await context.SaveChangesAsync();
+            }
+
+            //public async Task<Module> GetByName(string name)
+            //{
+            //    return await this.context.Roles.AsNoTracking().Where(item => item.Name == name).FirstOrDefaultAsync();
+            //}
+
 
         Task<Module> IModuleData.GetById(int id)
         {

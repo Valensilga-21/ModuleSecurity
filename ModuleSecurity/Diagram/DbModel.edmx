@@ -4,45 +4,45 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl" Namespace="Model1.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2005">
-        <EntityContainer Name="Model1TargetContainer" >
+      <Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl" Namespace="DbModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2005">
+        <EntityContainer Name="DbModelTargetContainer" >
         </EntityContainer>
       </Schema>
     </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="Model1" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
-        <EntityContainer Name="Model1Container" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="PersonSet" EntityType="Model1.Person" />
-          <EntitySet Name="UserSet" EntityType="Model1.User" />
-          <EntitySet Name="UserRoleSet" EntityType="Model1.UserRole" />
-          <EntitySet Name="RoleViewSet" EntityType="Model1.RoleView" />
-          <EntitySet Name="RoleSet" EntityType="Model1.Role" />
-          <EntitySet Name="ViewSet" EntityType="Model1.View" />
-          <EntitySet Name="ModuleSet" EntityType="Model1.Module" />
-          <AssociationSet Name="UserRoleUser" Association="Model1.UserRoleUser">
+      <Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="DbModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
+        <EntityContainer Name="DbModelContainer" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="PersonSet" EntityType="DbModel.Person" />
+          <EntitySet Name="UserSet" EntityType="DbModel.User" />
+          <EntitySet Name="UserRoleSet" EntityType="DbModel.UserRole" />
+          <EntitySet Name="RoleSet" EntityType="DbModel.Role" />
+          <EntitySet Name="RoleViewSet" EntityType="DbModel.RoleView" />
+          <EntitySet Name="ViewSet" EntityType="DbModel.View" />
+          <EntitySet Name="ModuleSet" EntityType="DbModel.Module" />
+          <AssociationSet Name="UserRoleUser" Association="DbModel.UserRoleUser">
             <End Role="UserRole" EntitySet="UserRoleSet" />
             <End Role="User" EntitySet="UserSet" />
           </AssociationSet>
-          <AssociationSet Name="PersonUser" Association="Model1.PersonUser">
+          <AssociationSet Name="UserRoleRole" Association="DbModel.UserRoleRole">
+            <End Role="UserRole" EntitySet="UserRoleSet" />
+            <End Role="Role" EntitySet="RoleSet" />
+          </AssociationSet>
+          <AssociationSet Name="UserPerson" Association="DbModel.UserPerson">
+            <End Role="User" EntitySet="UserSet" />
             <End Role="Person" EntitySet="PersonSet" />
-            <End Role="User" EntitySet="UserSet" />
           </AssociationSet>
-          <AssociationSet Name="RoleUserRole" Association="Model1.RoleUserRole">
-            <End Role="Role" EntitySet="RoleSet" />
-            <End Role="UserRole" EntitySet="UserRoleSet" />
-          </AssociationSet>
-          <AssociationSet Name="RoleRoleView" Association="Model1.RoleRoleView">
-            <End Role="Role" EntitySet="RoleSet" />
+          <AssociationSet Name="RoleViewRole" Association="DbModel.RoleViewRole">
             <End Role="RoleView" EntitySet="RoleViewSet" />
+            <End Role="Role" EntitySet="RoleSet" />
           </AssociationSet>
-          <AssociationSet Name="ViewModule" Association="Model1.ViewModule">
+          <AssociationSet Name="RoleViewView" Association="DbModel.RoleViewView">
+            <End Role="RoleView" EntitySet="RoleViewSet" />
+            <End Role="View" EntitySet="ViewSet" />
+          </AssociationSet>
+          <AssociationSet Name="ViewModule" Association="DbModel.ViewModule">
             <End Role="View" EntitySet="ViewSet" />
             <End Role="Module" EntitySet="ModuleSet" />
-          </AssociationSet>
-          <AssociationSet Name="RoleViewView" Association="Model1.RoleViewView">
-            <End Role="RoleView" EntitySet="RoleViewSet" />
-            <End Role="View" EntitySet="ViewSet" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="Person">
@@ -53,15 +53,15 @@
           <Property Name="First_name" Type="String" Nullable="false" />
           <Property Name="Last_name" Type="String" Nullable="false" />
           <Property Name="Email" Type="String" Nullable="false" />
-          <Property Name="Address" Type="String" Nullable="false" />
-          <Property Name="Type_document" Type="String" Nullable="false" />
-          <Property Name="Document" Type="String" Nullable="false" />
-          <Property Name="Birth_of_date" Type="DateTime" Nullable="false" cg:SetterAccess="Internal" />
-          <Property Name="CreateAt" Type="String" Nullable="false" />
-          <Property Name="UpdateAt" Type="String" Nullable="false" />
-          <Property Name="Phone" Type="String" Nullable="false" />
-          <Property Name="State" Type="String" Nullable="false" />
-          <Property Name="DeleteAt" Type="String" Nullable="false" />
+          <Property Name="Addres" Type="String" Nullable="false" />
+          <Property Name="TypeDocument" Type="String" Nullable="false" />
+          <Property Name="Document" Type="Int16" Nullable="false" />
+          <Property Name="Birth_of_date" Type="DateTime" Nullable="false" />
+          <Property Name="CreatedAt" Type="String" Nullable="false" />
+          <Property Name="UpdatedAt" Type="String" Nullable="false" />
+          <Property Name="DeletedAt" Type="String" Nullable="false" />
+          <Property Name="Phone" Type="Int16" Nullable="false" />
+          <Property Name="State" Type="Boolean" Nullable="false" />
         </EntityType>
         <EntityType Name="User">
           <Key>
@@ -70,38 +70,23 @@
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Username" Type="String" Nullable="false" />
           <Property Name="Password" Type="String" Nullable="false" />
-          <Property Name="CreateAt" Type="String" Nullable="false" />
-          <Property Name="UpdateAt" Type="String" Nullable="false" />
-          <Property Name="State" Type="String" Nullable="false" />
-          <Property Name="DeleteAt" Type="String" Nullable="false" />
-          <NavigationProperty Name="lstUserRoles" Relationship="Model1.UserRoleUser" FromRole="User" ToRole="UserRole" />
-          <NavigationProperty Name="Person_id" Relationship="Model1.PersonUser" FromRole="User" ToRole="Person" />
+          <Property Name="CreatedAt" Type="String" Nullable="false" />
+          <Property Name="UpdatedAt" Type="String" Nullable="false" />
+          <Property Name="DeletedAt" Type="String" Nullable="false" />
+          <Property Name="State" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="IdPerson" Relationship="DbModel.UserPerson" FromRole="User" ToRole="Person" />
         </EntityType>
         <EntityType Name="UserRole">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="CreateAt" Type="String" Nullable="false" />
-          <Property Name="UpdateAt" Type="String" Nullable="false" />
-          <Property Name="DeleteAt" Type="String" Nullable="false" />
+          <Property Name="CreatedAt" Type="String" Nullable="false" />
+          <Property Name="UpdatedAt" Type="String" Nullable="false" />
+          <Property Name="DeletedAt" Type="String" Nullable="false" />
           <Property Name="State" Type="Boolean" Nullable="false" />
-          <NavigationProperty Name="User_id" Relationship="Model1.UserRoleUser" FromRole="UserRole" ToRole="User" />
-          <NavigationProperty Name="Role_id" Relationship="Model1.RoleUserRole" FromRole="UserRole" ToRole="Role" />
-          <Property Name="RoleId" Type="Int32" Nullable="false" />
-        </EntityType>
-        <EntityType Name="RoleView">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" Type="Int32" />
-          <Property Name="State" Type="Boolean" Nullable="false" />
-          <Property Name="CreateAt" Type="String" Nullable="false" />
-          <Property Name="UpdateAt" Type="String" Nullable="false" />
-          <Property Name="DeleteAt" Type="String" Nullable="false" />
-          <NavigationProperty Name="Role_id" Relationship="Model1.RoleRoleView" FromRole="RoleView" ToRole="Role" />
-          <Property Name="RoleId" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="View_id" Relationship="Model1.RoleViewView" FromRole="RoleView" ToRole="View" />
+          <NavigationProperty Name="IdUser" Relationship="DbModel.UserRoleUser" FromRole="UserRole" ToRole="User" />
+          <NavigationProperty Name="IdRole" Relationship="DbModel.UserRoleRole" FromRole="UserRole" ToRole="Role" />
         </EntityType>
         <EntityType Name="Role">
           <Key>
@@ -110,10 +95,22 @@
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" Nullable="false" />
           <Property Name="Description" Type="String" Nullable="false" />
-          <Property Name="CreateAt" Type="String" Nullable="false" />
-          <Property Name="UpdateAt" Type="String" Nullable="false" />
-          <Property Name="DeleteAt" Nullable="false" Type="String" />
-          <Property Name="Stated" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedAt" Type="String" Nullable="false" />
+          <Property Name="UpdatedAt" Type="String" Nullable="false" />
+          <Property Name="DeletedAt" Type="String" Nullable="false" />
+          <Property Name="State" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="RoleView">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CreatedAt" Type="String" Nullable="false" />
+          <Property Name="UpdatedAt" Type="String" Nullable="false" />
+          <Property Name="DeletedAt" Type="String" Nullable="false" />
+          <Property Name="State" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="IdRole" Relationship="DbModel.RoleViewRole" FromRole="RoleView" ToRole="Role" />
+          <NavigationProperty Name="IdView" Relationship="DbModel.RoleViewView" FromRole="RoleView" ToRole="View" />
         </EntityType>
         <EntityType Name="View">
           <Key>
@@ -122,11 +119,11 @@
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" Nullable="false" />
           <Property Name="Description" Type="String" Nullable="false" />
-          <Property Name="CreateAt" Type="String" Nullable="false" />
-          <Property Name="UpdateAt" Type="String" Nullable="false" />
+          <Property Name="CreatedAt" Type="String" Nullable="false" />
+          <Property Name="UpdatedAt" Type="String" Nullable="false" />
+          <Property Name="DeletedAt" Type="String" Nullable="false" />
           <Property Name="State" Type="Boolean" Nullable="false" />
-          <Property Name="DeleteAt" Type="String" Nullable="false" />
-          <NavigationProperty Name="Module_id" Relationship="Model1.ViewModule" FromRole="View" ToRole="Module" />
+          <NavigationProperty Name="IdModule" Relationship="DbModel.ViewModule" FromRole="View" ToRole="Module" />
         </EntityType>
         <EntityType Name="Module">
           <Key>
@@ -134,59 +131,43 @@
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Description" Type="String" Nullable="false" />
-          <Property Name="CreateAt" Type="String" Nullable="false" />
-          <Property Name="UpdateAt" Type="String" Nullable="false" />
+          <Property Name="CreatedAt" Type="String" Nullable="false" />
+          <Property Name="UpdatedAt" Type="String" Nullable="false" />
+          <Property Name="DeletedAt" Type="String" Nullable="false" />
           <Property Name="State" Type="Boolean" Nullable="false" />
-          <Property Name="DeleteAt" Type="String" Nullable="false" />
         </EntityType>
         <Association Name="UserRoleUser">
-          <End Type="Model1.UserRole" Role="UserRole" Multiplicity="*" />
-          <End Type="Model1.User" Role="User" Multiplicity="1" />
+          <End Type="DbModel.UserRole" Role="UserRole" Multiplicity="*" />
+          <End Type="DbModel.User" Role="User" Multiplicity="1" />
         </Association>
-        <Association Name="PersonUser">
-          <End Type="Model1.Person" Role="Person" Multiplicity="1" />
-          <End Type="Model1.User" Role="User" Multiplicity="1" />
+        <Association Name="UserRoleRole">
+          <End Type="DbModel.UserRole" Role="UserRole" Multiplicity="*" />
+          <End Type="DbModel.Role" Role="Role" Multiplicity="1" />
         </Association>
-        <Association Name="RoleUserRole">
-          <End Type="Model1.Role" Role="Role" Multiplicity="1" />
-          <End Type="Model1.UserRole" Role="UserRole" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Role">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="UserRole">
-              <PropertyRef Name="RoleId" />
-            </Dependent>
-          </ReferentialConstraint>
+        <Association Name="UserPerson">
+          <End Type="DbModel.User" Role="User" Multiplicity="1" />
+          <End Type="DbModel.Person" Role="Person" Multiplicity="1" />
         </Association>
-        <Association Name="RoleRoleView">
-          <End Type="Model1.Role" Role="Role" Multiplicity="1" />
-          <End Type="Model1.RoleView" Role="RoleView" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Role">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="RoleView">
-              <PropertyRef Name="RoleId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="ViewModule">
-          <End Type="Model1.View" Role="View" Multiplicity="*" />
-          <End Type="Model1.Module" Role="Module" Multiplicity="1" />
+        <Association Name="RoleViewRole">
+          <End Type="DbModel.RoleView" Role="RoleView" Multiplicity="*" />
+          <End Type="DbModel.Role" Role="Role" Multiplicity="1" />
         </Association>
         <Association Name="RoleViewView">
-          <End Type="Model1.RoleView" Role="RoleView" Multiplicity="*" />
-          <End Type="Model1.View" Role="View" Multiplicity="1" />
+          <End Type="DbModel.RoleView" Role="RoleView" Multiplicity="*" />
+          <End Type="DbModel.View" Role="View" Multiplicity="1" />
+        </Association>
+        <Association Name="ViewModule">
+          <End Type="DbModel.View" Role="View" Multiplicity="*" />
+          <End Type="DbModel.Module" Role="Module" Multiplicity="1" />
         </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs" Space="C-S">
-        <Alias Key="Model" Value="Model1" />
-        <Alias Key="Target" Value="Model1.Store" />
-        <EntityContainerMapping CdmEntityContainer="Model1Container" StorageEntityContainer="Model1TargetContainer">
+        <Alias Key="Model" Value="DbModel" />
+        <Alias Key="Target" Value="DbModel.Store" />
+        <EntityContainerMapping CdmEntityContainer="DbModelContainer" StorageEntityContainer="DbModelTargetContainer">
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
@@ -202,7 +183,7 @@
       <DesignerInfoPropertySet>
         <DesignerProperty Name="ValidateOnBuild" Value="true" />
         <DesignerProperty Name="EnablePluralization" Value="False" />
-        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
       </DesignerInfoPropertySet>
     </edmx:Options>
     <!-- Diagram content (shape and connector positions) -->

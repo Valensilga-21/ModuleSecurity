@@ -1,9 +1,15 @@
 {
   "ExpandedNodes": [
     "",
-    "\\Business",
-    "\\Business\\Implemens",
-    "\\Data"
+    "\\Bussines",
+    "\\Bussines\\Implements",
+    "\\Bussines\\Interfaces",
+    "\\Data",
+    "\\Data\\Implements",
+    "\\Data\\Interfaces",
+    "\\Diagram",
+    "\\Entity",
+    "\\Entity\\DTO"
   ],
   "SelectedNode": "\\ModuleSecurity.sln",
   "PreviewInSolutionExplorer": false

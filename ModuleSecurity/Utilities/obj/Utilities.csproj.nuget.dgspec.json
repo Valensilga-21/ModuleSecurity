@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\SENA\\Documents\\ModuleSecurity\\ModuleSecurity\\Utilities\\Utilities.csproj": {}
+    "C:\\ModuleSecurity\\Utilities\\Utilities.csproj": {}
   },
   "projects": {
-    "C:\\Users\\SENA\\Documents\\ModuleSecurity\\ModuleSecurity\\Utilities\\Utilities.csproj": {
+    "C:\\ModuleSecurity\\Utilities\\Utilities.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\SENA\\Documents\\ModuleSecurity\\ModuleSecurity\\Utilities\\Utilities.csproj",
+        "projectUniqueName": "C:\\ModuleSecurity\\Utilities\\Utilities.csproj",
         "projectName": "Utilities",
-        "projectPath": "C:\\Users\\SENA\\Documents\\ModuleSecurity\\ModuleSecurity\\Utilities\\Utilities.csproj",
+        "projectPath": "C:\\ModuleSecurity\\Utilities\\Utilities.csproj",
         "packagesPath": "C:\\Users\\SENA\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\SENA\\Documents\\ModuleSecurity\\ModuleSecurity\\Utilities\\obj\\",
+        "outputPath": "C:\\ModuleSecurity\\Utilities\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\SENA\\AppData\\Roaming\\NuGet\\NuGet.Config",
