@@ -83,7 +83,7 @@ namespace Bussines.Implements
             View view = await this.data.GetById(entity.Id);
             if (view == null)
             {
-                throw new Exception("Registro NO encontrado");
+                throw new Exception("Registro no encontrado");
             }
             view = this.mapData(view, entity);
             await this.data.Update(view);

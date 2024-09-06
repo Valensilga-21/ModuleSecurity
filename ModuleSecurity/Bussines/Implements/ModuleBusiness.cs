@@ -2,11 +2,6 @@
 using Data.Interfaces;
 using Entity.DTO;
 using Entity.Model.Security;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Bussines.Implements
 {
@@ -75,7 +70,7 @@ namespace Bussines.Implements
             Module module = await this.data.GetById(entity.Id);
             if (module == null)
             {
-                throw new Exception("Registro NO encontrado");
+                throw new Exception("Registro no encontrado");
             }
             module = this.mapData(module, entity);
             await this.data.Update(module);

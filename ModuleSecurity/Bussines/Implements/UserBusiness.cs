@@ -70,7 +70,7 @@ namespace Bussines.Implements
             User user = await this.data.GetById(entity.Id);
             if (user == null)
             {
-                throw new Exception("Registro NO encontrado");
+                throw new Exception("Registro no encontrado");
             }
             user = this.mapData(user, entity);
             await this.data.Update(user);

@@ -79,7 +79,7 @@ namespace Bussines.Implements
             UserRole userrole = await this.data.GetById(entity.Id);
             if (userrole == null)
             {
-                throw new Exception("Registro NO encontrado");
+                throw new Exception("Registro no encontrado");
             }
             userrole = this.mapData(userrole, entity);
             await this.data.Update(userrole);

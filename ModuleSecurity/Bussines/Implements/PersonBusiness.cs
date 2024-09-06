@@ -71,7 +71,7 @@ namespace Bussines.Implements
             Person person = await this.data.GetById(entity.Id);
             if (person == null)
             {
-                throw new Exception("Registro NO encontrado");
+                throw new Exception("Registro no encontrado");
             }
             person = this.mapData(person, entity);
             await this.data.Update(person);

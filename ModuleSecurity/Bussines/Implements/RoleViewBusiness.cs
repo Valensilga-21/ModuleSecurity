@@ -74,7 +74,7 @@ namespace Bussines.Implements
             RoleView roleview = await this.data.GetById(entity.Id);
             if (roleview == null)
             {
-                throw new Exception("Registro NO encontrado");
+                throw new Exception("Registro no encontrado");
             }
             roleview = this.mapData(roleview, entity);
             await this.data.Update(roleview);

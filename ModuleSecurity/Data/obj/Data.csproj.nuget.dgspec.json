@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\ModuleSecurity\\Data\\Data.csproj": {}
+    "C:\\Users\\SENA\\Documents\\ModuleSecurity\\ModuleSecurity\\Data\\Data.csproj": {}
   },
   "projects": {
-    "C:\\ModuleSecurity\\Data\\Data.csproj": {
+    "C:\\Users\\SENA\\Documents\\ModuleSecurity\\ModuleSecurity\\Data\\Data.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\ModuleSecurity\\Data\\Data.csproj",
+        "projectUniqueName": "C:\\Users\\SENA\\Documents\\ModuleSecurity\\ModuleSecurity\\Data\\Data.csproj",
         "projectName": "Data",
-        "projectPath": "C:\\ModuleSecurity\\Data\\Data.csproj",
+        "projectPath": "C:\\Users\\SENA\\Documents\\ModuleSecurity\\ModuleSecurity\\Data\\Data.csproj",
         "packagesPath": "C:\\Users\\SENA\\.nuget\\packages\\",
-        "outputPath": "C:\\ModuleSecurity\\Data\\obj\\",
+        "outputPath": "C:\\Users\\SENA\\Documents\\ModuleSecurity\\ModuleSecurity\\Data\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\SENA\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -29,8 +29,8 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\ModuleSecurity\\Entity\\Entity.csproj": {
-                "projectPath": "C:\\ModuleSecurity\\Entity\\Entity.csproj"
+              "C:\\Users\\SENA\\Documents\\ModuleSecurity\\ModuleSecurity\\Entity\\Entity.csproj": {
+                "projectPath": "C:\\Users\\SENA\\Documents\\ModuleSecurity\\ModuleSecurity\\Entity\\Entity.csproj"
               }
             }
           }
@@ -69,14 +69,14 @@
         }
       }
     },
-    "C:\\ModuleSecurity\\Entity\\Entity.csproj": {
+    "C:\\Users\\SENA\\Documents\\ModuleSecurity\\ModuleSecurity\\Entity\\Entity.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\ModuleSecurity\\Entity\\Entity.csproj",
+        "projectUniqueName": "C:\\Users\\SENA\\Documents\\ModuleSecurity\\ModuleSecurity\\Entity\\Entity.csproj",
         "projectName": "Entity",
-        "projectPath": "C:\\ModuleSecurity\\Entity\\Entity.csproj",
+        "projectPath": "C:\\Users\\SENA\\Documents\\ModuleSecurity\\ModuleSecurity\\Entity\\Entity.csproj",
         "packagesPath": "C:\\Users\\SENA\\.nuget\\packages\\",
-        "outputPath": "C:\\ModuleSecurity\\Entity\\obj\\",
+        "outputPath": "C:\\Users\\SENA\\Documents\\ModuleSecurity\\ModuleSecurity\\Entity\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\SENA\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -117,23 +117,23 @@
             },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
-              "version": "[8.0.7, )"
+              "version": "[8.0.8, )"
             },
             "Microsoft.EntityFrameworkCore.Design": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
               "suppressParent": "All",
               "target": "Package",
-              "version": "[8.0.7, )"
+              "version": "[8.0.8, )"
             },
             "Microsoft.EntityFrameworkCore.SqlServer": {
               "target": "Package",
-              "version": "[8.0.7, )"
+              "version": "[8.0.8, )"
             },
             "Microsoft.EntityFrameworkCore.Tools": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
               "suppressParent": "All",
               "target": "Package",
-              "version": "[8.0.7, )"
+              "version": "[8.0.8, )"
             },
             "MySql.EntityFrameworkCore": {
               "target": "Package",
