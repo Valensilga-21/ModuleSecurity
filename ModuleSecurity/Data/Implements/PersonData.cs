@@ -26,16 +26,16 @@ namespace Data.Implements
                 if (entity == null)
                     throw new Exception("Registro no encontrado");
 
-                entity.DeletedAt = DateTime.Parse(DateTime.Today.ToString());
+                entity.DeleteAt = DateTime.Parse(DateTime.Today.ToString());
                 context.Persons.Update(entity);
                 await context.SaveChangesAsync();
             }
 
         public async Task<IEnumerable<DataSelectDto>> GetAllSelect()
         {
-            var sql = @"SELECT Id, CONCAT(First_name) AS TextoMostrar
+            var sql = @"SELECT Id, CONCAT(First_name, last_name, addres, typeDocument, document, birth_of_date, phone, state) AS TextoMostrar
                     FROM Person
-                    WHERE Deleted_at IS NULL AND State = 1
+                    WHERE DeletedAt IS NULL AND State = 1
                     ORDER BY Id ASC";
             return await context.QueryAsync<DataSelectDto>(sql);
         }

@@ -1,3 +1,5 @@
+using Entity.DTO;
+
 namespace Entity.Model.Security
 {
     public class City
@@ -8,5 +10,6 @@ namespace Entity.Model.Security
         public DateTime UpdateAt { get; set; }
         public DateTime DeleteAt { get; set; }
         public bool State { get; set; }
+
     }
 }

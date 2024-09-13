@@ -117,11 +117,12 @@ namespace Entity.Migrations
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime(6)");
 
-                    b.Property<DateTime>("DeletedAt")
+                    b.Property<DateTime>("DeleteAt")
                         .HasColumnType("datetime(6)");
 
-                    b.Property<short>("Document")
-                        .HasColumnType("smallint");
+                    b.Property<string>("Document")
+                        .IsRequired()
+                        .HasColumnType("longtext");
 
                     b.Property<string>("First_name")
                         .IsRequired()
@@ -131,8 +132,9 @@ namespace Entity.Migrations
                         .IsRequired()
                         .HasColumnType("longtext");
 
-                    b.Property<short>("Phone")
-                        .HasColumnType("smallint");
+                    b.Property<string>("Phone")
+                        .IsRequired()
+                        .HasColumnType("longtext");
 
                     b.Property<bool>("State")
                         .HasColumnType("tinyint(1)");
@@ -141,9 +143,8 @@ namespace Entity.Migrations
                         .IsRequired()
                         .HasColumnType("longtext");
 
-                    b.Property<string>("UpdatedAt")
-                        .IsRequired()
-                        .HasColumnType("longtext");
+                    b.Property<DateTime>("UpdateAt")
+                        .HasColumnType("datetime(6)");
 
                     b.HasKey("Id");
 

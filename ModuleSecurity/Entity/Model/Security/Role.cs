@@ -15,5 +15,6 @@ namespace Entity.Model.Security
         public string UpdatedAt { get; set; }
         public DateTime DeletedAt { get; set; }
         public bool State { get; set; }
+
     }
 }

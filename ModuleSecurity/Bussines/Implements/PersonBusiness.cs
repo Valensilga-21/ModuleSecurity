@@ -21,8 +21,8 @@ namespace Bussines.Implements
 
         public async Task<IEnumerable<PersonDto>> GetAll()
         {
-            IEnumerable<Person> persons = await this.data.GetAll();
-            var personDtos = persons.Select(person => new PersonDto
+            IEnumerable<Person> person = await this.data.GetAll();
+            var personDtos = person.Select(person => new PersonDto
             {
                 Id = person.Id,
                 First_name = person.First_name,

@@ -8,6 +8,7 @@
     "\\Data\\Interfaces",
     "\\Diagram",
     "\\Entity",
+    "\\Entity\\Context",
     "\\Entity\\DTO",
     "\\Entity\\Migrations"
   ],
