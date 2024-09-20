@@ -49,19 +49,22 @@ namespace Bussines.Implements
             userroleDto.State = userrole.State;
             return userroleDto;
         }
-        public UserRole mapData(UserRole userrole, UserRoleDto entity)
+
+        public UserRole mapData(UserRole userRole, UserRoleDto entity)
         {
-            userrole.Id = entity.Id;
-            userrole.IdUser = entity.IdUser;
-            userrole.IdRole = entity.IdRole;
-            userrole.State = entity.State;
-            return userrole;
+            userRole.Id = entity.Id;
+            userRole.IdUser = entity.IdUser;
+            userRole.IdRole = entity.IdRole;
+            userRole.State = entity.State;
+            return userRole;
         }
 
         public async Task<UserRole> Save(UserRoleDto entity)
         {
-            UserRole userrole = new UserRole();
-            userrole.CreatedAt = DateTime.Now.AddHours(-5);
+            UserRole userrole = new UserRole 
+            {
+                CreatedAt = DateTime.Now.AddHours(-5)
+            };
             userrole = this.mapData(userrole, entity);
             userrole.User = null;
             userrole.Role = null;
@@ -69,20 +72,16 @@ namespace Bussines.Implements
             return await this.data.Save(userrole);
         }
 
-        public Task<UserRole> Save(UserRole entity)
-        {
-            throw new NotImplementedException();
-        }
-
         public async Task Update(UserRoleDto entity)
         {
             UserRole userrole = await this.data.GetById(entity.Id);
             if (userrole == null)
             {
-                throw new Exception("Registro no encontrado");
+                throw new Exception("Registro NO encontrado");
             }
             userrole = this.mapData(userrole, entity);
             await this.data.Update(userrole);
         }
+
     }
 }

@@ -60,8 +60,10 @@ namespace Bussines.Implements
 
         public async Task<RoleView> Save(RoleViewDto entity)
         {
-            RoleView roleview = new RoleView();
-            roleview.CreatedAt = DateTime.Now.AddHours(-5);
+            RoleView roleview = new RoleView 
+            {
+                CreatedAt = DateTime.Now.AddHours(-5)
+            };
             roleview = this.mapData(roleview, entity);
             roleview.Role = null;
             roleview.View = null;
@@ -74,15 +76,10 @@ namespace Bussines.Implements
             RoleView roleview = await this.data.GetById(entity.Id);
             if (roleview == null)
             {
-                throw new Exception("Registro no encontrado");
+                throw new Exception("Registro NO encontrado");
             }
             roleview = this.mapData(roleview, entity);
             await this.data.Update(roleview);
-        }
-
-        public Task Update(ViewDto entity)
-        {
-            throw new NotImplementedException();
         }
     }
 }

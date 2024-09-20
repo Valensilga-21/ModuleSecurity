@@ -1,4 +1,10 @@
-﻿namespace Entity.Model.Security
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Entity.Model.Security
 {
     public class Person
     {
@@ -10,8 +16,8 @@
         public string Document { get; set; }
         public DateTime Birth_of_date { get; set; }
         public DateTime CreatedAt { get; set; }
-        public DateTime UpdateAt { get; set; }
-        public DateTime DeleteAt { get; set; }
+        public DateTime UpdatedAt { get; set; }
+        public DateTime DeletedAt { get; set; }
         public string Phone { get; set; }
         public bool State { get; set; }
     }

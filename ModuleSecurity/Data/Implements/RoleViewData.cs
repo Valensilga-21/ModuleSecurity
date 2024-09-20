@@ -27,6 +27,7 @@ namespace Data.Implements
                     throw new Exception("Registro no encontrado");
 
                 entity.DeletedAt = DateTime.Parse(DateTime.Today.ToString());
+                entity.State = false;
                 context.RoleViews.Update(entity);
                 await context.SaveChangesAsync();
             }
@@ -34,7 +35,7 @@ namespace Data.Implements
         public async Task<IEnumerable<DataSelectDto>> GetAllSelect()
         {
             var sql = @"SELECT Id AS TextoMostrar
-                        FROM RoleView
+                        FROM RoleViews
                         WHERE Deleted_at IS NULL AND State = 1
                         ORDER BY Id ASC";
             return await context.QueryAsync<DataSelectDto>(sql);
@@ -44,7 +45,7 @@ namespace Data.Implements
             {
                 try
                 {
-                    var sql = @"SELECT * FROM RoleView WHERE Id = @Id ORDER BY Id ASC";
+                    var sql = @"SELECT * FROM RoleViews WHERE Id = @Id ORDER BY Id ASC";
                     return await this.context.QueryFirstOrDefaultAsync<RoleView>(sql, new { Id = id });
                 }
                 catch (Exception)
@@ -73,7 +74,7 @@ namespace Data.Implements
 
         public async Task<IEnumerable<RoleView>> GetAll()
         {
-            var sql = @"SELECT * FROM RoleView ORDER BY Id ASC";
+            var sql = @"SELECT * FROM RoleViews WHERE State=true ORDER BY Id ASC";
             return await this.context.QueryAsync<RoleView>(sql);
         }
     }

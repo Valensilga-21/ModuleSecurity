@@ -67,8 +67,10 @@ namespace Bussines.Implements
 
         public async Task<Role> Save(RoleDto entity)
         {
-            Role role = new Role();
-            role.CreatedAt = DateTime.Now.AddHours(-5);
+            Role role = new Role 
+            {
+                CreatedAt = DateTime.Now.AddHours(-5)
+            };
             role = this.mapData(role, entity);
 
             return await this.data.Save(role);
@@ -79,7 +81,7 @@ namespace Bussines.Implements
             Role role = await this.data.GetById(entity.Id);
             if (role == null)
             {
-                throw new Exception("Registro no encontrado");
+                throw new Exception("Registro NO encontrado");
             }
             role = this.mapData(role, entity);
             await this.data.Update(role);

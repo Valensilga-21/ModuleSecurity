@@ -11,15 +11,15 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Entity.Migrations
 {
     [DbContext(typeof(ApplicationDBContext))]
-    [Migration("20240913185022_quintaMIgracion")]
-    partial class quintaMIgracion
+    [Migration("20240920174754_terceraMigracion")]
+    partial class terceraMigracion
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "8.0.8")
+                .HasAnnotation("ProductVersion", "8.0.7")
                 .HasAnnotation("Relational:MaxIdentifierLength", 64);
 
             modelBuilder.Entity("Entity.Model.Security.City", b =>
@@ -49,7 +49,7 @@ namespace Entity.Migrations
                     b.ToTable("Cities");
                 });
 
-            modelBuilder.Entity("Entity.Model.Security.Countrie", b =>
+            modelBuilder.Entity("Entity.Model.Security.Countries", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -73,7 +73,7 @@ namespace Entity.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Countries");
+                    b.ToTable("Countriess");
                 });
 
             modelBuilder.Entity("Entity.Model.Security.Module", b =>
@@ -95,9 +95,8 @@ namespace Entity.Migrations
                     b.Property<bool>("State")
                         .HasColumnType("tinyint(1)");
 
-                    b.Property<string>("UpdatedAt")
-                        .IsRequired()
-                        .HasColumnType("longtext");
+                    b.Property<DateTime>("UpdatedAt")
+                        .HasColumnType("datetime(6)");
 
                     b.HasKey("Id");
 
@@ -117,13 +116,10 @@ namespace Entity.Migrations
                     b.Property<DateTime>("Birth_of_date")
                         .HasColumnType("datetime(6)");
 
-                    b.Property<int>("CountrieId")
-                        .HasColumnType("int");
-
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime(6)");
 
-                    b.Property<DateTime>("DeleteAt")
+                    b.Property<DateTime>("DeletedAt")
                         .HasColumnType("datetime(6)");
 
                     b.Property<string>("Document")
@@ -133,9 +129,6 @@ namespace Entity.Migrations
                     b.Property<string>("First_name")
                         .IsRequired()
                         .HasColumnType("longtext");
-
-                    b.Property<int>("IdCountrieId")
-                        .HasColumnType("int");
 
                     b.Property<string>("Last_name")
                         .IsRequired()
@@ -152,14 +145,10 @@ namespace Entity.Migrations
                         .IsRequired()
                         .HasColumnType("longtext");
 
-                    b.Property<DateTime>("UpdateAt")
+                    b.Property<DateTime>("UpdatedAt")
                         .HasColumnType("datetime(6)");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("CountrieId");
-
-                    b.HasIndex("IdCountrieId");
 
                     b.ToTable("Persons");
                 });
@@ -187,9 +176,8 @@ namespace Entity.Migrations
                     b.Property<bool>("State")
                         .HasColumnType("tinyint(1)");
 
-                    b.Property<string>("UpdatedAt")
-                        .IsRequired()
-                        .HasColumnType("longtext");
+                    b.Property<DateTime>("UpdatedAt")
+                        .HasColumnType("datetime(6)");
 
                     b.HasKey("Id");
 
@@ -220,9 +208,8 @@ namespace Entity.Migrations
                     b.Property<bool>("State")
                         .HasColumnType("tinyint(1)");
 
-                    b.Property<string>("UpdatedAt")
-                        .IsRequired()
-                        .HasColumnType("longtext");
+                    b.Property<DateTime>("UpdatedAt")
+                        .HasColumnType("datetime(6)");
 
                     b.Property<int>("ViewId")
                         .HasColumnType("int");
@@ -292,7 +279,10 @@ namespace Entity.Migrations
                     b.Property<bool>("State")
                         .HasColumnType("tinyint(1)");
 
-                    b.Property<string>("UpdatedAt")
+                    b.Property<DateTime>("UpdatedAt")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<string>("Username")
                         .IsRequired()
                         .HasColumnType("longtext");
 
@@ -329,9 +319,8 @@ namespace Entity.Migrations
                     b.Property<bool>("State")
                         .HasColumnType("tinyint(1)");
 
-                    b.Property<string>("UpdatedAt")
-                        .IsRequired()
-                        .HasColumnType("longtext");
+                    b.Property<DateTime>("UpdatedAt")
+                        .HasColumnType("datetime(6)");
 
                     b.Property<int>("UserId")
                         .HasColumnType("int");
@@ -378,9 +367,8 @@ namespace Entity.Migrations
                     b.Property<bool>("State")
                         .HasColumnType("tinyint(1)");
 
-                    b.Property<string>("UpdatedAt")
-                        .IsRequired()
-                        .HasColumnType("longtext");
+                    b.Property<DateTime>("UpdatedAt")
+                        .HasColumnType("datetime(6)");
 
                     b.HasKey("Id");
 
@@ -389,25 +377,6 @@ namespace Entity.Migrations
                     b.HasIndex("ModuleId");
 
                     b.ToTable("Views");
-                });
-
-            modelBuilder.Entity("Entity.Model.Security.Person", b =>
-                {
-                    b.HasOne("Entity.Model.Security.Countrie", "Countrie")
-                        .WithMany()
-                        .HasForeignKey("CountrieId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Entity.Model.Security.Countrie", "IdCountrie")
-                        .WithMany()
-                        .HasForeignKey("IdCountrieId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Countrie");
-
-                    b.Navigation("IdCountrie");
                 });
 
             modelBuilder.Entity("Entity.Model.Security.RoleView", b =>

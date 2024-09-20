@@ -9,38 +9,32 @@ using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
+
 builder.Services.AddDbContext<ApplicationDBContext>(options =>
 options.UseMySQL(builder.Configuration.GetConnectionString("MySqlConnection")));
 
-builder.Services.AddScoped<IModuleData, ModuleData>();
-builder.Services.AddScoped<IModuleBusiness, ModuleBusiness>();
+builder.Services.AddScoped<IModuleData,ModuleData>();
+builder.Services.AddScoped<IModuleBusiness,ModuleBusiness>();
+builder.Services.AddScoped<IPersonData,PersonData>();
+builder.Services.AddScoped<IPersonBusiness,PersonBusiness>();
+builder.Services.AddScoped<IRoleData,RoleData>();
+builder.Services.AddScoped<IRoleBusiness,RoleBusiness>();
+builder.Services.AddScoped<IRoleViewData,RoleViewData>();
+builder.Services.AddScoped<IRoleViewBusiness,RoleViewBusiness>();
+builder.Services.AddScoped<IUserData,UserData>();
+builder.Services.AddScoped<IUserBusiness,UserBusiness>();
+builder.Services.AddScoped<IUserRoleData,UserRoleData>();
+builder.Services.AddScoped<IUserRoleBusiness,UserRoleBusiness>();
+builder.Services.AddScoped<IViewData,ViewData>();
+builder.Services.AddScoped<IViewBusiness,ViewBusiness>();
+builder.Services.AddScoped<ICityData,CityData>();
+builder.Services.AddScoped<ICityBusiness,CityBusiness>();
+builder.Services.AddScoped<IStateData,StateData>();
+builder.Services.AddScoped<IStateBusiness,StateBusiness>();
+builder.Services.AddScoped<ICountriesData,CountriesData>();
+builder.Services.AddScoped<ICountriesBusiness,CountriesBusiness>();
 
-builder.Services.AddScoped<IPersonData, PersonData>();
-builder.Services.AddScoped<IPersonBusiness, PersonBusiness>();
 
-builder.Services.AddScoped<ICityData, CityData>();
-builder.Services.AddScoped<ICityBusiness, CityBusiness>();
-
-builder.Services.AddScoped<ICountrieData, CountrieData>();
-builder.Services.AddScoped<ICountrieBusiness, CountryBusiness>();
-
-builder.Services.AddScoped<IRoleData, RoleData>();
-builder.Services.AddScoped<IRoleBusiness, RoleBusiness>();
-
-builder.Services.AddScoped<IRoleViewData, RoleViewData>();
-builder.Services.AddScoped<IRoleViewBusiness, RoleViewBusiness>();
-
-builder.Services.AddScoped<IStateData, StateData>();
-builder.Services.AddScoped<IStateBusiness, StateBusiness>();
-
-builder.Services.AddScoped<IUserData, UserData>();
-builder.Services.AddScoped<IUserBusiness, UserBusiness>();
-
-builder.Services.AddScoped<IUserRoleData, UserRoleData>();
-builder.Services.AddScoped<IUserRoleBusiness, UserRoleBusiness>();
-
-builder.Services.AddScoped<IViewData, ViewData>();
-builder.Services.AddScoped<IViewBusiness, ViewBusiness>();
 // Add services to the container.
 
 builder.Services.AddControllers();
@@ -54,7 +48,7 @@ var app = builder.Build();
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
-    app.UseSwaggerUI();
+    app.UseSwaggerUI(); 
 }
 
 app.UseHttpsRedirection();

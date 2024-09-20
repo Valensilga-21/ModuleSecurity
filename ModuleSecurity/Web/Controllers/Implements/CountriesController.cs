@@ -1,17 +1,19 @@
 ﻿using Business.Interface;
+using Data.Implements;
 using Entity.DTO;
 using Entity.Model.Security;
 using Microsoft.AspNetCore.Mvc;
+using System.Diagnostics.Metrics;
 
 namespace Web.Controllers.Implements
 {
     [ApiController]
     [Route("[controller]")]
-    public class CountrieController : ControllerBase
+    public class CountriesController : ControllerBase
     {
-        private readonly ICountrieBusiness _countriesBusiness;
+        private readonly ICountriesBusiness _countriesBusiness;
 
-        public CountrieController(ICountrieBusiness countriesBusiness)
+        public CountriesController(ICountriesBusiness countriesBusiness)
         {
             _countriesBusiness = countriesBusiness;
         }
@@ -35,7 +37,7 @@ namespace Web.Controllers.Implements
         }
 
         [HttpPost]
-        public async Task<ActionResult<Countrie>> Save([FromBody] CountriesDto entity)
+        public async Task<ActionResult<Countries>> Save([FromBody] CountriesDto entity)
         {
             if (entity == null)
             {

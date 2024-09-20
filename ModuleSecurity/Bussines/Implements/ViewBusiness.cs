@@ -70,8 +70,10 @@ namespace Bussines.Implements
 
         public async Task<View> Save(ViewDto entity)
         {
-            View view = new View();
-            view.CreatedAt = DateTime.Now.AddHours(-5);
+            View view = new View 
+            {
+               CreatedAt = DateTime.Now.AddHours(-5)
+            };
             view = this.mapData(view, entity);
             view.Module = null;
 
@@ -83,7 +85,7 @@ namespace Bussines.Implements
             View view = await this.data.GetById(entity.Id);
             if (view == null)
             {
-                throw new Exception("Registro no encontrado");
+                throw new Exception("Registro NO encontrado");
             }
             view = this.mapData(view, entity);
             await this.data.Update(view);

@@ -7,11 +7,11 @@ namespace Web.Controllers.Implements
 {
     [ApiController]
     [Route("[controller]")]
-    public class ModuleController : ControllerBase
+    public class ModuloController : ControllerBase
     {
         private readonly IModuleBusiness _moduleBusiness;
 
-        public ModuleController(IModuleBusiness moduleBusiness)
+        public ModuloController(IModuleBusiness moduleBusiness)
         {
             _moduleBusiness = moduleBusiness;
         }
@@ -35,26 +35,26 @@ namespace Web.Controllers.Implements
         }
 
         [HttpPost]
-        public async Task<ActionResult<Module>> Save([FromBody] ModuleDto entity)
+        public async Task<ActionResult<Module>> Save([FromBody] ModuleDto moduleDto)
         {
-            if (entity == null)
+            if (moduleDto == null)
             {
                 return BadRequest("Entity is null");
             }
 
-            var result = await _moduleBusiness.Save(entity);
+            var result = await _moduleBusiness.Save(moduleDto);
             return CreatedAtAction(nameof(GetById), new { id = result.Id }, result);
         }
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> Update([FromBody] ModuleDto entity)
+        public async Task<IActionResult> Update([FromBody] ModuleDto moduleDto)
         {
-            if (entity == null || entity.Id == 0)
+            if (moduleDto == null || moduleDto.Id == 0)
             {
                 return BadRequest();
             }
 
-            await _moduleBusiness.Update(entity);
+            await _moduleBusiness.Update(moduleDto);
             return NoContent();
         }
 

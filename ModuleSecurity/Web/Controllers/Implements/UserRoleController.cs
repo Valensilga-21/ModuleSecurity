@@ -9,24 +9,24 @@ namespace Web.Controllers.Implements
     [Route("[controller]")]
     public class UserRoleController : ControllerBase
     {
-        private readonly IUserRoleBusiness _userroleBusiness;
+        private readonly IUserRoleBusiness _userRoleBusiness;
 
-        public UserRoleController(IUserRoleBusiness userroleBusiness)
+        public UserRoleController(IUserRoleBusiness userRoleBusiness)
         {
-            _userroleBusiness = userroleBusiness;
+            _userRoleBusiness = userRoleBusiness;
         }
 
         [HttpGet]
         public async Task<ActionResult<IEnumerable<UserRoleDto>>> GetAll()
         {
-            var result = await _userroleBusiness.GetAll();
+            var result = await _userRoleBusiness.GetAll();
             return Ok(result);
         }
 
         [HttpGet("{id}")]
         public async Task<ActionResult<UserRoleDto>> GetById(int id)
         {
-            var result = await _userroleBusiness.GetById(id);
+            var result = await _userRoleBusiness.GetById(id);
             if (result == null)
             {
                 return NotFound();
@@ -35,33 +35,33 @@ namespace Web.Controllers.Implements
         }
 
         [HttpPost]
-        public async Task<ActionResult<UserRole>> Save([FromBody] UserRoleDto entity)
+        public async Task<ActionResult<UserRole>> Save([FromBody] UserRoleDto userRoleDto)
         {
-            if (entity == null)
+            if (userRoleDto == null)
             {
                 return BadRequest("Entity is null");
             }
 
-            var result = await _userroleBusiness.Save(entity);
+            var result = await _userRoleBusiness.Save(userRoleDto);
             return CreatedAtAction(nameof(GetById), new { id = result.Id }, result);
         }
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> Update([FromBody] UserRoleDto entity)
+        public async Task<IActionResult> Update([FromBody] UserRoleDto userRoleDto)
         {
-            if (entity == null || entity.Id == 0)
+            if (userRoleDto == null || userRoleDto.Id == 0)
             {
                 return BadRequest();
             }
 
-            await _userroleBusiness.Update(entity);
+            await _userRoleBusiness.Update(userRoleDto);
             return NoContent();
         }
 
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(int id)
         {
-            await _userroleBusiness.Delete(id);
+            await _userRoleBusiness.Delete(id);
             return NoContent();
         }
     }

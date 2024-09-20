@@ -9,24 +9,24 @@ namespace Web.Controllers.Implements
     [Route("[controller]")]
     public class RoleViewController : ControllerBase
     {
-        private readonly IRoleViewBusiness _roleviewBusiness;
+        private readonly IRoleViewBusiness _roleViewBusiness;
 
-        public RoleViewController(IRoleViewBusiness roleviewBusiness)
+        public RoleViewController(IRoleViewBusiness roleViewBusiness)
         {
-            _roleviewBusiness = roleviewBusiness;
+            _roleViewBusiness = roleViewBusiness;
         }
 
         [HttpGet]
         public async Task<ActionResult<IEnumerable<RoleViewDto>>> GetAll()
         {
-            var result = await _roleviewBusiness.GetAll();
+            var result = await _roleViewBusiness.GetAll();
             return Ok(result);
         }
 
         [HttpGet("{id}")]
         public async Task<ActionResult<RoleViewDto>> GetById(int id)
         {
-            var result = await _roleviewBusiness.GetById(id);
+            var result = await _roleViewBusiness.GetById(id);
             if (result == null)
             {
                 return NotFound();
@@ -35,33 +35,33 @@ namespace Web.Controllers.Implements
         }
 
         [HttpPost]
-        public async Task<ActionResult<RoleView>> Save([FromBody] RoleViewDto entity)
+        public async Task<ActionResult<RoleView>> Save([FromBody] RoleViewDto roleViewDto)
         {
-            if (entity == null)
+            if (roleViewDto == null)
             {
                 return BadRequest("Entity is null");
             }
 
-            var result = await _roleviewBusiness.Save(entity);
+            var result = await _roleViewBusiness.Save(roleViewDto);
             return CreatedAtAction(nameof(GetById), new { id = result.Id }, result);
         }
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> Update([FromBody] RoleViewDto entity)
+        public async Task<IActionResult> Update([FromBody] RoleViewDto roleViewDto)
         {
-            if (entity == null || entity.Id == 0)
+            if (roleViewDto == null || roleViewDto.Id == 0)
             {
                 return BadRequest();
             }
 
-            await _roleviewBusiness.Update(entity);
+            await _roleViewBusiness.Update(roleViewDto);
             return NoContent();
         }
 
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(int id)
         {
-            await _roleviewBusiness.Delete(id);
+            await _roleViewBusiness.Delete(id);
             return NoContent();
         }
     }

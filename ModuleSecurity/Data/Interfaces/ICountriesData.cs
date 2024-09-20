@@ -6,14 +6,14 @@ using System.Threading.Tasks;
 
 namespace Data.Interfaces
 {
-    public interface ICountrieData
+    public interface ICountriesData
     {
         public Task Delete(int id);
-        public Task<Countrie> GetByName(string name);
-        public Task<Countrie> Save(Countrie entity);
-        public Task Update(Countrie entity);
-        public Task<Countrie> GetById(int id);
-        public Task<IEnumerable<Countrie>> GetAll();
+        public Task<Countries> GetByName(string name);
+        public Task<Countries> Save(Countries entity);
+        public Task Update(Countries entity);
+        public Task<Countries> GetById(int id);
+        public Task<IEnumerable<Countries>> GetAll();
         public Task<IEnumerable<DataSelectDto>> GetAllSelect();
         
     }

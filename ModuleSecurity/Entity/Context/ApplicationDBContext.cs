@@ -63,9 +63,11 @@ namespace Entity.Context
             ChangeTracker.DetectChanges();
         }
 
-        public Task<IEnumerable<T>> QueryAsync<T>(string sql)
+        public async Task<IEnumerable<T>> QueryAsync<T>(string text, object parameters = null, int? timeout = null, CommandType? type = null)
         {
-            throw new NotImplementedException();
+            using var command = new DapperEFCoreCommand(this, text, parameters, timeout, type, CancellationToken.None);
+            var connection = this.Database.GetDbConnection();
+            return await connection.QueryAsync<T>(command.Definition);
         }
 
         // Security
@@ -77,10 +79,9 @@ namespace Entity.Context
         public DbSet<UserRole> UserRoles => Set<UserRole>();
         public DbSet<View> Views => Set<View>();
         public DbSet<Module> Modules => Set<Module>();
+        public DbSet<Countries> Countriess => Set<Countries>();
+        public DbSet<State> States => Set<State>();
         public DbSet<City> Cities => Set<City>();
-        public DbSet<Countrie> Countries => Set<Countrie>();
-        public DbSet <State> States => Set<State>();
-
 
         public readonly struct DapperEFCoreCommand : IDisposable
         {

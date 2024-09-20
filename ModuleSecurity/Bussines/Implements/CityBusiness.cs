@@ -2,6 +2,7 @@
 using Data.Interfaces;
 using Entity.DTO;
 using Entity.Model.Security;
+using static Dapper.SqlMapper;
 
 namespace Business.Implements
 {
@@ -26,6 +27,7 @@ namespace Business.Implements
             {
                 Id = city.Id,
                 Name = city.Name,
+                State = city.State,
             });
 
             return cityDtos;
@@ -38,6 +40,7 @@ namespace Business.Implements
             {
                 Id = city.Id,
                 Name = city.Name,
+                State = city.State,
             };
 
             return cityDto;
@@ -47,7 +50,7 @@ namespace Business.Implements
         {
             city.Id = entity.Id;
             city.Name = entity.Name;
-
+            city.State = entity.State;
             return city;
         }
 

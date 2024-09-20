@@ -8,12 +8,12 @@ using System.Diagnostics.Metrics;
 
 namespace Data.Implements
 {
-    public class CountrieData : ICountrieData
+    public class CountriesData : ICountriesData
     {
         private readonly ApplicationDBContext context;
         protected readonly IConfiguration configuration;
 
-        public CountrieData(ApplicationDBContext context, IConfiguration configuration)
+        public CountriesData(ApplicationDBContext context, IConfiguration configuration)
         {
             this.context = context;
             this.configuration = configuration;
@@ -26,32 +26,33 @@ namespace Data.Implements
                 throw new Exception("Registro no encontrado");
 
             entity.DeleteAt = DateTime.Parse(DateTime.Today.ToString());
-            object value = context.Countries.Update(entity);
+            entity.State = false;
+            context.Countriess.Update(entity);
             await context.SaveChangesAsync();
         }
          
-        public async Task<Countrie> GetById(int id)
+        public async Task<Countries> GetById(int id)
         {
-            var sql = @"SELECT * FROM Country WHERE Id = @Id ORDER BY Id ASC";
-            return await this.context.QueryFirstOrDefaultAsync<Countrie>(sql, new { Id = id });
+            var sql = @"SELECT * FROM Countriess WHERE Id = @Id ORDER BY Id ASC";
+            return await this.context.QueryFirstOrDefaultAsync<Countries>(sql, new { Id = id });
         }
 
-        public async Task<Countrie> Save(Countrie entity)
+        public async Task<Countries> Save(Countries entity)
         {
-            context.Countries.Add(entity);
+            context.Countriess.Add(entity);
             await context.SaveChangesAsync();
             return entity;
         }
 
-        public async Task Update(Countrie entity)
+        public async Task Update(Countries entity)
         {
             context.Entry(entity).State = EntityState.Modified;
             await context.SaveChangesAsync();
         }
 
-        public async Task<Countrie> GetByName(string name)
+        public async Task<Countries> GetByName(string name)
         {
-            return await this.context.Countries.AsNoTracking().Where(item => item.Name == name).FirstOrDefaultAsync();
+            return await this.context.Countriess.AsNoTracking().Where(item => item.Name == name).FirstOrDefaultAsync();
         }
 
         public async Task<IEnumerable<DataSelectDto>> GetAllSelect()
@@ -60,7 +61,7 @@ namespace Data.Implements
             {
                 var sql = @"
                     SELECT Id, CONCAT(Name) AS TextoMostrar
-                    FROM Country
+                    FROM Countriess
                     WHERE Deleted_at IS NULL AND State = 1
                     ORDER BY Id ASC";
 
@@ -72,12 +73,12 @@ namespace Data.Implements
             }
         }
 
-        public async Task<IEnumerable<Countrie>> GetAll()
+        public async Task<IEnumerable<Countries>> GetAll()
         {
             try
             {
-                var sql = "SELECT * FROM Country ORDER BY Id ASC";
-                return await this.context.QueryAsync<Countrie>(sql);
+                var sql = "SELECT * FROM Countriess WHERE State=true ORDER BY Id ASC";
+                return await this.context.QueryAsync<Countries>(sql);
             }
             catch (Exception ex)
             {

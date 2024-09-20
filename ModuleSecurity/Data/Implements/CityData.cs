@@ -25,13 +25,14 @@ namespace Data.Implements
                 throw new Exception("Registro no encontrado");
 
             entity.DeleteAt = DateTime.Parse(DateTime.Today.ToString());
+            entity.State = false;
             context.Cities.Update(entity);
             await context.SaveChangesAsync();
         }
 
         public async Task<City> GetById(int id)
         {
-            var sql = @"SELECT * FROM City WHERE Id = @Id ORDER BY Id ASC";
+            var sql = @"SELECT * FROM Cities WHERE Id = @Id ORDER BY Id ASC";
             return await this.context.QueryFirstOrDefaultAsync<City>(sql, new { Id = id });
         }
 
@@ -59,7 +60,7 @@ namespace Data.Implements
             {
                 var sql = @"
                     SELECT Id, CONCAT(Name) AS TextoMostrar
-                    FROM City
+                    FROM Cities
                     WHERE Deleted_at IS NULL AND State = 1
                     ORDER BY Id ASC";
 
@@ -75,7 +76,7 @@ namespace Data.Implements
         {
             try
             {
-                var sql = "SELECT * FROM City ORDER BY Id ASC";
+                var sql = "SELECT * FROM Cities WHERE State=true  ORDER BY Id ASC";
                 return await this.context.QueryAsync<City>(sql);
             }
             catch (Exception ex)
@@ -83,6 +84,5 @@ namespace Data.Implements
                 throw new Exception("Error al obtener todas las Cities", ex);
             }
         }
-
     }
 }

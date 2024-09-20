@@ -26,16 +26,17 @@ namespace Data.Implements
                 if (entity == null)
                     throw new Exception("Registro no encontrado");
 
-                entity.DeleteAt = DateTime.Parse(DateTime.Today.ToString());
+                entity.DeletedAt = DateTime.Parse(DateTime.Today.ToString());
+                entity.State = false;
                 context.Persons.Update(entity);
                 await context.SaveChangesAsync();
             }
 
         public async Task<IEnumerable<DataSelectDto>> GetAllSelect()
         {
-            var sql = @"SELECT Id, CONCAT(First_name, last_name, addres, typeDocument, document, birth_of_date, phone, state) AS TextoMostrar
-                    FROM Person
-                    WHERE DeletedAt IS NULL AND State = 1
+            var sql = @"SELECT Id, CONCAT(First_name) AS TextoMostrar
+                    FROM Persons
+                    WHERE Deleted_at IS NULL AND State = 1
                     ORDER BY Id ASC";
             return await context.QueryAsync<DataSelectDto>(sql);
         }
@@ -44,7 +45,7 @@ namespace Data.Implements
             {
                 try
                 {
-                    var sql = @"SELECT * FROM Person WHERE Id = @Id ORDER BY Id ASC";
+                    var sql = @"SELECT * FROM Persons WHERE Id = @Id ORDER BY Id ASC";
                     return await this.context.QueryFirstOrDefaultAsync<Person>(sql, new { Id = id });
                 }
                 catch (Exception)
@@ -73,7 +74,7 @@ namespace Data.Implements
 
         public async Task<IEnumerable<Person>> GetAll()
         {
-            var sql = @"SELECT * FROM Person ORDER BY Id ASC";
+            var sql = @"SELECT * FROM Persons WHERE State=true ORDER BY Id ASC";
             return await this.context.QueryAsync<Person>(sql);
         }
     }

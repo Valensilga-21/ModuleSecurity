@@ -27,16 +27,14 @@ namespace Data.Implements
                     throw new Exception("Registro no encontrado");
 
                 entity.DeletedAt = DateTime.Parse(DateTime.Today.ToString());
+                entity.State = false;
                 context.Views.Update(entity);
                 await context.SaveChangesAsync();
             }
 
         public async Task<IEnumerable<DataSelectDto>> GetAllSelect()
         {
-            var sql = @"SELECT Id, CONCAT(Name, ' - ', Description) AS TextoMostrar
-                        FROM View
-                        WHERE Deleted_at IS NULL AND State = 1
-                        ORDER BY Id ASC";
+            var sql = @"SELECT * Views AS v INNER JOIN Module AS mod ON v.IdModule = mod.Id";
             return await context.QueryAsync<DataSelectDto>(sql);
         }
 
@@ -44,7 +42,7 @@ namespace Data.Implements
             {
                 try
                 {
-                    var sql = @"SELECT * FROM View WHERE Id = @Id ORDER BY Id ASC";
+                    var sql = @"SELECT * FROM Views WHERE Id = @Id ORDER BY Id ASC";
                     return await this.context.QueryFirstOrDefaultAsync<View>(sql, new { Id = id });
                 }
                 catch (Exception)
@@ -74,7 +72,7 @@ namespace Data.Implements
         
         public async Task<IEnumerable<View>> GetAll()
         {
-            var sql = @"SELECT * FROM View ORDER BY Id ASC";
+            var sql = @"SELECT * FROM Views WHERE State=true ORDER BY Id ASC";
             return await this.context.QueryAsync<View>(sql);
         }
     }

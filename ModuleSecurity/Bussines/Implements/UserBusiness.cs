@@ -57,8 +57,10 @@ namespace Bussines.Implements
 
         public async Task<User> Save(UserDto entity)
         {
-            User user = new User();
-            user.CreatedAt = DateTime.Now.AddHours(-5);
+            User user = new User 
+            {
+                CreatedAt = DateTime.Now.AddHours(-5)
+            };
             user = this.mapData(user, entity);
             user.Person = null;
 
@@ -70,7 +72,7 @@ namespace Bussines.Implements
             User user = await this.data.GetById(entity.Id);
             if (user == null)
             {
-                throw new Exception("Registro no encontrado");
+                throw new Exception("Registro NO encontrado");
             }
             user = this.mapData(user, entity);
             await this.data.Update(user);

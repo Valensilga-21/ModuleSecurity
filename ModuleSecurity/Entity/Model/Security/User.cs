@@ -10,9 +10,10 @@ namespace Entity.Model.Security
     {
 
         public int Id { get; set; }
+        public string Username { get; set; }
         public string Password { get; set; }
         public DateTime CreatedAt { get; set; }
-        public string UpdatedAt { get; set; }
+        public DateTime UpdatedAt { get; set; }
         public DateTime DeletedAt { get; set; }
         public bool State { get; set; }
 

@@ -1,7 +1,0 @@
-C:\Users\SENA\Documents\ModuleSecurity\ModuleSecurity\Diagram\bin\Release\Diagram.dll.config
-C:\Users\SENA\Documents\ModuleSecurity\ModuleSecurity\Diagram\bin\Release\Diagram.dll
-C:\Users\SENA\Documents\ModuleSecurity\ModuleSecurity\Diagram\bin\Release\Diagram.pdb
-C:\Users\SENA\Documents\ModuleSecurity\ModuleSecurity\Diagram\obj\Release\Diagram.csproj.AssemblyReference.cache
-C:\Users\SENA\Documents\ModuleSecurity\ModuleSecurity\Diagram\obj\Release\Diagram.csproj.CoreCompileInputs.cache
-C:\Users\SENA\Documents\ModuleSecurity\ModuleSecurity\Diagram\obj\Release\Diagram.dll
-C:\Users\SENA\Documents\ModuleSecurity\ModuleSecurity\Diagram\obj\Release\Diagram.pdb
