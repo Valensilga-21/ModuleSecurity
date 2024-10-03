@@ -5,11 +5,10 @@ using Entity.Model.Security;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using System.Data;
-using System.Linq.Expressions;
 
 namespace Data.Implements
 {
-        public class PersonData : IPersonData
+    public class PersonData : IPersonData
         {
             private readonly ApplicationDBContext context;
             protected readonly IConfiguration configuration;
@@ -26,7 +25,7 @@ namespace Data.Implements
                 if (entity == null)
                     throw new Exception("Registro no encontrado");
 
-                entity.DeletedAt = DateTime.Parse(DateTime.Today.ToString());
+                entity.DeleteAt = DateTime.Parse(DateTime.Today.ToString());
                 entity.State = false;
                 context.Persons.Update(entity);
                 await context.SaveChangesAsync();
@@ -34,10 +33,9 @@ namespace Data.Implements
 
         public async Task<IEnumerable<DataSelectDto>> GetAllSelect()
         {
-            var sql = @"SELECT Id, CONCAT(First_name) AS TextoMostrar
-                    FROM Persons
-                    WHERE Deleted_at IS NULL AND State = 1
-                    ORDER BY Id ASC";
+            var sql = @"SELECT cy.Id, cy.Name 
+                FROM persons AS p 
+                INNER JOIN cities AS cy ON p.IdCity = cy.Id";
             return await context.QueryAsync<DataSelectDto>(sql);
         }
 

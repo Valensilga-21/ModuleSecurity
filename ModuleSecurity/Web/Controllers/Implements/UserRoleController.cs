@@ -39,7 +39,7 @@ namespace Web.Controllers.Implements
         {
             if (userRoleDto == null)
             {
-                return BadRequest("Entity is null");
+                return BadRequest("La entidad es nula");
             }
 
             var result = await _userRoleBusiness.Save(userRoleDto);

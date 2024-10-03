@@ -33,6 +33,7 @@ namespace Bussines.Implements
                 Birth_of_date = person.Birth_of_date,
                 Phone = person.Phone,
                 State = person.State,
+                CityId = person.CityId,
             });
             return personDtos;
         }
@@ -62,6 +63,8 @@ namespace Bussines.Implements
             personDto.Birth_of_date = person.Birth_of_date;
             personDto.Phone = person.Phone;
             personDto.State = person.State;
+            personDto.CityId = person.CityId;
+
             return personDto;
         }
         public Person mapData(Person person, PersonDto entity)
@@ -75,6 +78,7 @@ namespace Bussines.Implements
             person.Birth_of_date = entity.Birth_of_date;
             person.Phone = entity.Phone;
             person.State = entity.State;
+            person.CityId = entity.CityId;
             return person;
         }
 
@@ -82,7 +86,7 @@ namespace Bussines.Implements
         {
             Person person = new Person 
             {
-                CreatedAt = DateTime.Now.AddHours(-5)
+                CreateAt = DateTime.Now.AddHours(-5)
             };
             
             person = this.mapData(person, entity);
@@ -95,7 +99,7 @@ namespace Bussines.Implements
             Person person = await this.data.GetById(entity.Id);
             if (person == null)
             {
-                throw new Exception("Registro NO encontrado");
+                throw new Exception("Registro no encontrado");
             }
             person = this.mapData(person, entity);
             await this.data.Update(person);

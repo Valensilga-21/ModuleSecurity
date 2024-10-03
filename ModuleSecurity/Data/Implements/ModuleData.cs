@@ -4,12 +4,10 @@ using Entity.DTO;
 using Entity.Model.Security;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
-using System.Data;
-using System.Linq.Expressions;
 
 namespace Data.Implements
 {
-        public class ModuleData : IModuleData
+    public class ModuleData : IModuleData
     {
             private readonly ApplicationDBContext context;
             protected readonly IConfiguration configuration;
@@ -26,7 +24,7 @@ namespace Data.Implements
                 if (entity == null)
                     throw new Exception("Registro no encontrado");
 
-                entity.DeletedAt = DateTime.Parse(DateTime.Today.ToString());
+                entity.DeleteAt = DateTime.Parse(DateTime.Today.ToString());
                 entity.State = false;
                 context.Modules.Update(entity);
                 await context.SaveChangesAsync();
@@ -36,7 +34,7 @@ namespace Data.Implements
         {
             var sql = @"SELECT Id AS TextoMostrar
                         FROM Modules
-                        WHERE Deleted_at IS NULL AND State = 1
+                        WHERE DeletedAt IS NULL AND State = 1
                         ORDER BY Id ASC";
             return await context.QueryAsync<DataSelectDto>(sql);
         }
@@ -66,11 +64,6 @@ namespace Data.Implements
                 context.Entry(entity).State = EntityState.Modified;
                 await context.SaveChangesAsync();
             }
-
-            //public async Task<Module> GetByName(string name)
-            //{
-            //    return await this.context.Roles.AsNoTracking().Where(item => item.Name == name).FirstOrDefaultAsync();
-            //}
 
 
         Task<Module> IModuleData.GetById(int id)

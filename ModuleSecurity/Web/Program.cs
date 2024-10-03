@@ -11,7 +11,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 
 builder.Services.AddDbContext<ApplicationDBContext>(options =>
-options.UseMySQL(builder.Configuration.GetConnectionString("MySqlConnection")));
+ options.UseMySQL(builder.Configuration.GetConnectionString("MySqlConnection")));
 
 builder.Services.AddScoped<IModuleData,ModuleData>();
 builder.Services.AddScoped<IModuleBusiness,ModuleBusiness>();
@@ -31,8 +31,8 @@ builder.Services.AddScoped<ICityData,CityData>();
 builder.Services.AddScoped<ICityBusiness,CityBusiness>();
 builder.Services.AddScoped<IStateData,StateData>();
 builder.Services.AddScoped<IStateBusiness,StateBusiness>();
-builder.Services.AddScoped<ICountriesData,CountriesData>();
-builder.Services.AddScoped<ICountriesBusiness,CountriesBusiness>();
+builder.Services.AddScoped<ICountryData,CountryData>();
+builder.Services.AddScoped<ICountryBusiness,CountryBusiness>();
 
 
 // Add services to the container.

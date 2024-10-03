@@ -4,12 +4,10 @@ using Entity.DTO;
 using Entity.Model.Security;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
-using System.Data;
-using System.Linq.Expressions;
 
 namespace Data.Implements
 {
-        public class RoleViewData : IRoleViewData
+    public class RoleViewData : IRoleViewData
         {
             private readonly ApplicationDBContext context;
             protected readonly IConfiguration configuration;
@@ -26,7 +24,7 @@ namespace Data.Implements
                 if (entity == null)
                     throw new Exception("Registro no encontrado");
 
-                entity.DeletedAt = DateTime.Parse(DateTime.Today.ToString());
+                entity.DeleteAt = DateTime.Parse(DateTime.Today.ToString());
                 entity.State = false;
                 context.RoleViews.Update(entity);
                 await context.SaveChangesAsync();
@@ -34,10 +32,8 @@ namespace Data.Implements
 
         public async Task<IEnumerable<DataSelectDto>> GetAllSelect()
         {
-            var sql = @"SELECT Id AS TextoMostrar
-                        FROM RoleViews
-                        WHERE Deleted_at IS NULL AND State = 1
-                        ORDER BY Id ASC";
+            var sql = @"SELECT r.Name, v.Name FROM roles r INNER JOIN
+                roleviews rv ON r.Id = rv.IdRole views v ON rv.IdView = v.Id";
             return await context.QueryAsync<DataSelectDto>(sql);
         }
 
@@ -66,11 +62,6 @@ namespace Data.Implements
                 context.Entry(entity).State = EntityState.Modified;
                 await context.SaveChangesAsync();
             }
-
-            //public async Task<Role> GetByName(string name)
-            //{
-            //    return await this.context.Roles.AsNoTracking().Where(item => item.Name == name).FirstOrDefaultAsync();
-            //}
 
         public async Task<IEnumerable<RoleView>> GetAll()
         {

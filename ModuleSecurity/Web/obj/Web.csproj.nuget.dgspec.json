@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\SENA\\Documents\\ModuleSecurity\\ModuleSecurity\\Web\\Web.csproj": {}
+    "C:\\C-\\C#\\ModuleSecurity\\Web\\Web.csproj": {}
   },
   "projects": {
-    "C:\\Users\\SENA\\Documents\\ModuleSecurity\\ModuleSecurity\\Bussines\\Bussines.csproj": {
+    "C:\\C-\\C#\\ModuleSecurity\\Bussines\\Bussines.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\SENA\\Documents\\ModuleSecurity\\ModuleSecurity\\Bussines\\Bussines.csproj",
+        "projectUniqueName": "C:\\C-\\C#\\ModuleSecurity\\Bussines\\Bussines.csproj",
         "projectName": "Bussines",
-        "projectPath": "C:\\Users\\SENA\\Documents\\ModuleSecurity\\ModuleSecurity\\Bussines\\Bussines.csproj",
+        "projectPath": "C:\\C-\\C#\\ModuleSecurity\\Bussines\\Bussines.csproj",
         "packagesPath": "C:\\Users\\SENA\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\SENA\\Documents\\ModuleSecurity\\ModuleSecurity\\Bussines\\obj\\",
+        "outputPath": "C:\\C-\\C#\\ModuleSecurity\\Bussines\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\SENA\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -29,11 +29,11 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Users\\SENA\\Documents\\ModuleSecurity\\ModuleSecurity\\Data\\Data.csproj": {
-                "projectPath": "C:\\Users\\SENA\\Documents\\ModuleSecurity\\ModuleSecurity\\Data\\Data.csproj"
+              "C:\\C-\\C#\\ModuleSecurity\\Data\\Data.csproj": {
+                "projectPath": "C:\\C-\\C#\\ModuleSecurity\\Data\\Data.csproj"
               },
-              "C:\\Users\\SENA\\Documents\\ModuleSecurity\\ModuleSecurity\\Entity\\Entity.csproj": {
-                "projectPath": "C:\\Users\\SENA\\Documents\\ModuleSecurity\\ModuleSecurity\\Entity\\Entity.csproj"
+              "C:\\C-\\C#\\ModuleSecurity\\Entity\\Entity.csproj": {
+                "projectPath": "C:\\C-\\C#\\ModuleSecurity\\Entity\\Entity.csproj"
               }
             }
           }
@@ -72,14 +72,14 @@
         }
       }
     },
-    "C:\\Users\\SENA\\Documents\\ModuleSecurity\\ModuleSecurity\\Data\\Data.csproj": {
+    "C:\\C-\\C#\\ModuleSecurity\\Data\\Data.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\SENA\\Documents\\ModuleSecurity\\ModuleSecurity\\Data\\Data.csproj",
+        "projectUniqueName": "C:\\C-\\C#\\ModuleSecurity\\Data\\Data.csproj",
         "projectName": "Data",
-        "projectPath": "C:\\Users\\SENA\\Documents\\ModuleSecurity\\ModuleSecurity\\Data\\Data.csproj",
+        "projectPath": "C:\\C-\\C#\\ModuleSecurity\\Data\\Data.csproj",
         "packagesPath": "C:\\Users\\SENA\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\SENA\\Documents\\ModuleSecurity\\ModuleSecurity\\Data\\obj\\",
+        "outputPath": "C:\\C-\\C#\\ModuleSecurity\\Data\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\SENA\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -97,8 +97,8 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Users\\SENA\\Documents\\ModuleSecurity\\ModuleSecurity\\Entity\\Entity.csproj": {
-                "projectPath": "C:\\Users\\SENA\\Documents\\ModuleSecurity\\ModuleSecurity\\Entity\\Entity.csproj"
+              "C:\\C-\\C#\\ModuleSecurity\\Entity\\Entity.csproj": {
+                "projectPath": "C:\\C-\\C#\\ModuleSecurity\\Entity\\Entity.csproj"
               }
             }
           }
@@ -137,14 +137,14 @@
         }
       }
     },
-    "C:\\Users\\SENA\\Documents\\ModuleSecurity\\ModuleSecurity\\Entity\\Entity.csproj": {
+    "C:\\C-\\C#\\ModuleSecurity\\Entity\\Entity.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\SENA\\Documents\\ModuleSecurity\\ModuleSecurity\\Entity\\Entity.csproj",
+        "projectUniqueName": "C:\\C-\\C#\\ModuleSecurity\\Entity\\Entity.csproj",
         "projectName": "Entity",
-        "projectPath": "C:\\Users\\SENA\\Documents\\ModuleSecurity\\ModuleSecurity\\Entity\\Entity.csproj",
+        "projectPath": "C:\\C-\\C#\\ModuleSecurity\\Entity\\Entity.csproj",
         "packagesPath": "C:\\Users\\SENA\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\SENA\\Documents\\ModuleSecurity\\ModuleSecurity\\Entity\\obj\\",
+        "outputPath": "C:\\C-\\C#\\ModuleSecurity\\Entity\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\SENA\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -228,14 +228,14 @@
         }
       }
     },
-    "C:\\Users\\SENA\\Documents\\ModuleSecurity\\ModuleSecurity\\Web\\Web.csproj": {
+    "C:\\C-\\C#\\ModuleSecurity\\Web\\Web.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\SENA\\Documents\\ModuleSecurity\\ModuleSecurity\\Web\\Web.csproj",
+        "projectUniqueName": "C:\\C-\\C#\\ModuleSecurity\\Web\\Web.csproj",
         "projectName": "Web",
-        "projectPath": "C:\\Users\\SENA\\Documents\\ModuleSecurity\\ModuleSecurity\\Web\\Web.csproj",
+        "projectPath": "C:\\C-\\C#\\ModuleSecurity\\Web\\Web.csproj",
         "packagesPath": "C:\\Users\\SENA\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\SENA\\Documents\\ModuleSecurity\\ModuleSecurity\\Web\\obj\\",
+        "outputPath": "C:\\C-\\C#\\ModuleSecurity\\Web\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\SENA\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -253,8 +253,8 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Users\\SENA\\Documents\\ModuleSecurity\\ModuleSecurity\\Bussines\\Bussines.csproj": {
-                "projectPath": "C:\\Users\\SENA\\Documents\\ModuleSecurity\\ModuleSecurity\\Bussines\\Bussines.csproj"
+              "C:\\C-\\C#\\ModuleSecurity\\Bussines\\Bussines.csproj": {
+                "projectPath": "C:\\C-\\C#\\ModuleSecurity\\Bussines\\Bussines.csproj"
               }
             }
           }

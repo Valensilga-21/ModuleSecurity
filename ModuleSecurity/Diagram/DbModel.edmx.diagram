@@ -12,18 +12,18 @@
         <EntityTypeShape EntityType="DbModel.RoleView" Width="1.5" PointX="9.375" PointY="0.5" />
         <EntityTypeShape EntityType="DbModel.View" Width="1.5" PointX="11.75" PointY="0.5" />
         <EntityTypeShape EntityType="DbModel.Module" Width="1.5" PointX="14.125" PointY="0.5" />
-        <AssociationConnector Association="DbModel.UserRoleUser" />
-        <AssociationConnector Association="DbModel.UserRoleRole" />
-        <AssociationConnector Association="DbModel.UserPerson" />
-        <AssociationConnector Association="DbModel.RoleViewRole" />
-        <AssociationConnector Association="DbModel.RoleViewView" />
-        <AssociationConnector Association="DbModel.ViewModule" />
-        <EntityTypeShape EntityType="DbModel.Countries" Width="1.5" PointX="9.625" PointY="3.75" />
-        <EntityTypeShape EntityType="DbModel.State" Width="1.5" PointX="6.875" PointY="3.375" />
-        <EntityTypeShape EntityType="DbModel.City" Width="1.5" PointX="3.875" PointY="3.75" />
+        <EntityTypeShape EntityType="DbModel.Country" Width="1.5" PointX="4.625" PointY="4.875" />
+        <EntityTypeShape EntityType="DbModel.State" Width="1.5" PointX="2.625" PointY="4.875" />
+        <EntityTypeShape EntityType="DbModel.City" Width="1.5" PointX="0.5" PointY="4.875" />
         <AssociationConnector Association="DbModel.CountriesState" />
-        <AssociationConnector Association="DbModel.StateCity" />
         <AssociationConnector Association="DbModel.CityPerson" />
+        <AssociationConnector Association="DbModel.PersonUser" />
+        <AssociationConnector Association="DbModel.UserUserRole" />
+        <AssociationConnector Association="DbModel.RoleUserRole" />
+        <AssociationConnector Association="DbModel.RoleRoleView" />
+        <AssociationConnector Association="DbModel.ViewRoleView" />
+        <AssociationConnector Association="DbModel.ModuleView" />
+        <AssociationConnector Association="DbModel.CityState" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -25,8 +25,8 @@ namespace Bussines.Implements
             var roleviewDtos = roleviews.Select(roleview => new RoleViewDto
             {
                 Id = roleview.Id,
-                IdRole = roleview.IdRole,
-                IdView = roleview.IdView,
+                RoleId = roleview.RoleId,
+                ViewId = roleview.ViewId,
                 State = roleview.State,
             });
             return roleviewDtos;
@@ -44,16 +44,16 @@ namespace Bussines.Implements
             RoleViewDto roleviewDto = new RoleViewDto();
 
             roleviewDto.Id = roleview.Id;
-            roleviewDto.IdRole = roleview.IdRole;
-            roleviewDto.IdView = roleview.IdView;
+            roleviewDto.RoleId = roleview.RoleId;
+            roleviewDto.ViewId = roleview.ViewId;
             roleviewDto.State = roleview.State;
             return roleviewDto;
         }
         public RoleView mapData(RoleView roleview, RoleViewDto entity)
         {
             roleview.Id = entity.Id;
-            roleview.IdRole = entity.IdRole;
-            roleview.IdView = entity.IdView;
+            roleview.RoleId = entity.RoleId;
+            roleview.ViewId = entity.ViewId;
             roleview.State = entity.State;
             return roleview;
         }
@@ -62,7 +62,7 @@ namespace Bussines.Implements
         {
             RoleView roleview = new RoleView 
             {
-                CreatedAt = DateTime.Now.AddHours(-5)
+                CreateAt = DateTime.Now.AddHours(-5)
             };
             roleview = this.mapData(roleview, entity);
             roleview.Role = null;
@@ -76,7 +76,7 @@ namespace Bussines.Implements
             RoleView roleview = await this.data.GetById(entity.Id);
             if (roleview == null)
             {
-                throw new Exception("Registro NO encontrado");
+                throw new Exception("Registro  encontrado");
             }
             roleview = this.mapData(roleview, entity);
             await this.data.Update(roleview);

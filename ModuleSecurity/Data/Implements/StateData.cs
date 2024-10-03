@@ -30,10 +30,11 @@ namespace Data.Implements
             await context.SaveChangesAsync();
         }
 
-        public async Task<State> GetById(int id)
+        public async Task<IEnumerable<DataSelectDto>> GetAllSelect()
         {
-            var sql = @"SELECT * FROM States WHERE Id = @Id ORDER BY Id ASC";
-            return await this.context.QueryFirstOrDefaultAsync<State>(sql, new { Id = id });
+            var sql = @"SELECT cy.Name, cr.Name FROM cities cy INNER JOIN
+                states s ON cy.Id = s.IdCity countries cr ON s.IdCountries = cr.Id";
+            return await context.QueryAsync<DataSelectDto>(sql);
         }
 
         public async Task<State> Save(State entity)
@@ -54,24 +55,6 @@ namespace Data.Implements
             return await this.context.States.AsNoTracking().Where(item => item.Name == name).FirstOrDefaultAsync();
         }
 
-        public async Task<IEnumerable<DataSelectDto>> GetAllSelect()
-        {
-            try
-            {
-                var sql = @"
-                    SELECT Id, CONCAT(Name) AS TextoMostrar
-                    FROM States
-                    WHERE Deleted_at IS NULL AND State = 1
-                    ORDER BY Id ASC";
-
-                return await this.context.QueryAsync<DataSelectDto>(sql);
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("Error al obtener la lista de selección de States", ex);
-            }
-        }
-
         public async Task<IEnumerable<State>> GetAll()
         {
             try
@@ -81,8 +64,13 @@ namespace Data.Implements
             }
             catch (Exception ex)
             {
-                throw new Exception("Error al obtener todos los States", ex);
+                throw new Exception("Error al obtener los states", ex);
             }
+        }
+
+        public Task<State> GetById(int id)
+        {
+            throw new NotImplementedException();
         }
     }
 }

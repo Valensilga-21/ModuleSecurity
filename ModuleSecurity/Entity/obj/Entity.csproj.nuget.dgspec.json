@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\SENA\\Documents\\ModuleSecurity\\ModuleSecurity\\Entity\\Entity.csproj": {}
+    "C:\\C-\\C#\\ModuleSecurity\\Entity\\Entity.csproj": {}
   },
   "projects": {
-    "C:\\Users\\SENA\\Documents\\ModuleSecurity\\ModuleSecurity\\Entity\\Entity.csproj": {
+    "C:\\C-\\C#\\ModuleSecurity\\Entity\\Entity.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\SENA\\Documents\\ModuleSecurity\\ModuleSecurity\\Entity\\Entity.csproj",
+        "projectUniqueName": "C:\\C-\\C#\\ModuleSecurity\\Entity\\Entity.csproj",
         "projectName": "Entity",
-        "projectPath": "C:\\Users\\SENA\\Documents\\ModuleSecurity\\ModuleSecurity\\Entity\\Entity.csproj",
+        "projectPath": "C:\\C-\\C#\\ModuleSecurity\\Entity\\Entity.csproj",
         "packagesPath": "C:\\Users\\SENA\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\SENA\\Documents\\ModuleSecurity\\ModuleSecurity\\Entity\\obj\\",
+        "outputPath": "C:\\C-\\C#\\ModuleSecurity\\Entity\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\SENA\\AppData\\Roaming\\NuGet\\NuGet.Config",

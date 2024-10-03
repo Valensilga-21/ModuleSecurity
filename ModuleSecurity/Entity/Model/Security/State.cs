@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Entity.Model.Security
+﻿namespace Entity.Model.Security
 {
     public class State
     {
@@ -14,5 +8,10 @@ namespace Entity.Model.Security
         public DateTime UpdateAt { get; set; }
         public DateTime DeleteAt { get; set; }
         public bool state { get; set; }
+
+        //Relacion tabla Country
+        public int CountryId { get; set; }
+        public Country Country { get; set; }
+
     }
 }

@@ -8,5 +8,10 @@
         public DateTime UpdateAt { get; set; }
         public DateTime DeleteAt { get; set; }
         public bool State { get; set; }
+
+        //Relacion tablas State
+        public int StateId { get; set; }
+        public State States { get; set; }
+
     }
 }

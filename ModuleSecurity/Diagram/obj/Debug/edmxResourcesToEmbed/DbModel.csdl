@@ -8,29 +8,44 @@
     <EntitySet Name="RoleViewSet" EntityType="DbModel.RoleView" />
     <EntitySet Name="ViewSet" EntityType="DbModel.View" />
     <EntitySet Name="ModuleSet" EntityType="DbModel.Module" />
-    <AssociationSet Name="UserRoleUser" Association="DbModel.UserRoleUser">
-      <End Role="UserRole" EntitySet="UserRoleSet" />
-      <End Role="User" EntitySet="UserSet" />
+    <EntitySet Name="CountrySet" EntityType="DbModel.Country" />
+    <EntitySet Name="StateSet" EntityType="DbModel.State" />
+    <EntitySet Name="CitySet" EntityType="DbModel.City" />
+    <AssociationSet Name="CountriesState" Association="DbModel.CountriesState">
+      <End Role="Countries" EntitySet="CountrySet" />
+      <End Role="State" EntitySet="StateSet" />
     </AssociationSet>
-    <AssociationSet Name="UserRoleRole" Association="DbModel.UserRoleRole">
-      <End Role="UserRole" EntitySet="UserRoleSet" />
-      <End Role="Role" EntitySet="RoleSet" />
-    </AssociationSet>
-    <AssociationSet Name="UserPerson" Association="DbModel.UserPerson">
-      <End Role="User" EntitySet="UserSet" />
+    <AssociationSet Name="CityPerson" Association="DbModel.CityPerson">
+      <End Role="City" EntitySet="CitySet" />
       <End Role="Person" EntitySet="PersonSet" />
     </AssociationSet>
-    <AssociationSet Name="RoleViewRole" Association="DbModel.RoleViewRole">
-      <End Role="RoleView" EntitySet="RoleViewSet" />
+    <AssociationSet Name="PersonUser" Association="DbModel.PersonUser">
+      <End Role="Person" EntitySet="PersonSet" />
+      <End Role="User" EntitySet="UserSet" />
+    </AssociationSet>
+    <AssociationSet Name="UserUserRole" Association="DbModel.UserUserRole">
+      <End Role="User" EntitySet="UserSet" />
+      <End Role="UserRole" EntitySet="UserRoleSet" />
+    </AssociationSet>
+    <AssociationSet Name="RoleUserRole" Association="DbModel.RoleUserRole">
       <End Role="Role" EntitySet="RoleSet" />
+      <End Role="UserRole" EntitySet="UserRoleSet" />
     </AssociationSet>
-    <AssociationSet Name="RoleViewView" Association="DbModel.RoleViewView">
+    <AssociationSet Name="RoleRoleView" Association="DbModel.RoleRoleView">
+      <End Role="Role" EntitySet="RoleSet" />
       <End Role="RoleView" EntitySet="RoleViewSet" />
+    </AssociationSet>
+    <AssociationSet Name="ViewRoleView" Association="DbModel.ViewRoleView">
+      <End Role="View" EntitySet="ViewSet" />
+      <End Role="RoleView" EntitySet="RoleViewSet" />
+    </AssociationSet>
+    <AssociationSet Name="ModuleView" Association="DbModel.ModuleView">
+      <End Role="Module" EntitySet="ModuleSet" />
       <End Role="View" EntitySet="ViewSet" />
     </AssociationSet>
-    <AssociationSet Name="ViewModule" Association="DbModel.ViewModule">
-      <End Role="View" EntitySet="ViewSet" />
-      <End Role="Module" EntitySet="ModuleSet" />
+    <AssociationSet Name="CityState" Association="DbModel.CityState">
+      <End Role="City" EntitySet="CitySet" />
+      <End Role="State" EntitySet="StateSet" />
     </AssociationSet>
   </EntityContainer>
   <EntityType Name="Person">
@@ -45,11 +60,14 @@
     <Property Name="TypeDocument" Type="String" Nullable="false" />
     <Property Name="Document" Type="Int16" Nullable="false" />
     <Property Name="Birth_of_date" Type="DateTime" Nullable="false" />
-    <Property Name="CreatedAt" Type="String" Nullable="false" />
-    <Property Name="UpdatedAt" Type="String" Nullable="false" />
-    <Property Name="DeletedAt" Type="String" Nullable="false" />
+    <Property Name="CreateAt" Type="String" Nullable="false" />
+    <Property Name="UpdateAt" Type="String" Nullable="false" />
+    <Property Name="DeleteAt" Type="String" Nullable="false" />
     <Property Name="Phone" Type="Int16" Nullable="false" />
     <Property Name="State" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="City" Relationship="DbModel.CityPerson" FromRole="Person" ToRole="City" />
+    <Property Name="IdCity" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="User" Relationship="DbModel.PersonUser" FromRole="Person" ToRole="User" />
   </EntityType>
   <EntityType Name="User">
     <Key>
@@ -58,23 +76,25 @@
     <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="Username" Type="String" Nullable="false" />
     <Property Name="Password" Type="String" Nullable="false" />
-    <Property Name="CreatedAt" Type="String" Nullable="false" />
-    <Property Name="UpdatedAt" Type="String" Nullable="false" />
-    <Property Name="DeletedAt" Type="String" Nullable="false" />
+    <Property Name="CreateAt" Type="String" Nullable="false" />
+    <Property Name="UpdateAt" Type="String" Nullable="false" />
+    <Property Name="DeleteAt" Type="String" Nullable="false" />
     <Property Name="State" Type="Boolean" Nullable="false" />
-    <NavigationProperty Name="IdPerson" Relationship="DbModel.UserPerson" FromRole="User" ToRole="Person" />
+    <NavigationProperty Name="Person" Relationship="DbModel.PersonUser" FromRole="User" ToRole="Person" />
+    <NavigationProperty Name="UserRole" Relationship="DbModel.UserUserRole" FromRole="User" ToRole="UserRole" />
   </EntityType>
   <EntityType Name="UserRole">
     <Key>
       <PropertyRef Name="Id" />
     </Key>
     <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="CreatedAt" Type="String" Nullable="false" />
-    <Property Name="UpdatedAt" Type="String" Nullable="false" />
-    <Property Name="DeletedAt" Type="String" Nullable="false" />
+    <Property Name="CreateAt" Type="String" Nullable="false" />
+    <Property Name="UpdateAt" Type="String" Nullable="false" />
+    <Property Name="DeleteAt" Type="String" Nullable="false" />
     <Property Name="State" Type="Boolean" Nullable="false" />
-    <NavigationProperty Name="IdUser" Relationship="DbModel.UserRoleUser" FromRole="UserRole" ToRole="User" />
-    <NavigationProperty Name="IdRole" Relationship="DbModel.UserRoleRole" FromRole="UserRole" ToRole="Role" />
+    <NavigationProperty Name="User" Relationship="DbModel.UserUserRole" FromRole="UserRole" ToRole="User" />
+    <Property Name="IdUser" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Role" Relationship="DbModel.RoleUserRole" FromRole="UserRole" ToRole="Role" />
   </EntityType>
   <EntityType Name="Role">
     <Key>
@@ -83,22 +103,26 @@
     <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="Name" Type="String" Nullable="false" />
     <Property Name="Description" Type="String" Nullable="false" />
-    <Property Name="CreatedAt" Type="String" Nullable="false" />
-    <Property Name="UpdatedAt" Type="String" Nullable="false" />
-    <Property Name="DeletedAt" Type="String" Nullable="false" />
+    <Property Name="CreateAt" Type="String" Nullable="false" />
+    <Property Name="UpdateAt" Type="String" Nullable="false" />
+    <Property Name="DeleteAt" Type="String" Nullable="false" />
     <Property Name="State" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="UserRole" Relationship="DbModel.RoleUserRole" FromRole="Role" ToRole="UserRole" />
+    <NavigationProperty Name="RoleView" Relationship="DbModel.RoleRoleView" FromRole="Role" ToRole="RoleView" />
   </EntityType>
   <EntityType Name="RoleView">
     <Key>
       <PropertyRef Name="Id" />
     </Key>
     <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="CreatedAt" Type="String" Nullable="false" />
-    <Property Name="UpdatedAt" Type="String" Nullable="false" />
-    <Property Name="DeletedAt" Type="String" Nullable="false" />
+    <Property Name="CreateAt" Type="String" Nullable="false" />
+    <Property Name="UpdateAt" Type="String" Nullable="false" />
+    <Property Name="DeleteAt" Type="String" Nullable="false" />
     <Property Name="State" Type="Boolean" Nullable="false" />
-    <NavigationProperty Name="IdRole" Relationship="DbModel.RoleViewRole" FromRole="RoleView" ToRole="Role" />
-    <NavigationProperty Name="IdView" Relationship="DbModel.RoleViewView" FromRole="RoleView" ToRole="View" />
+    <NavigationProperty Name="Role" Relationship="DbModel.RoleRoleView" FromRole="RoleView" ToRole="Role" />
+    <Property Name="IdRole" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="View" Relationship="DbModel.ViewRoleView" FromRole="RoleView" ToRole="View" />
+    <Property Name="IdView" Type="Int32" Nullable="false" />
   </EntityType>
   <EntityType Name="View">
     <Key>
@@ -107,11 +131,12 @@
     <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="Name" Type="String" Nullable="false" />
     <Property Name="Description" Type="String" Nullable="false" />
-    <Property Name="CreatedAt" Type="String" Nullable="false" />
-    <Property Name="UpdatedAt" Type="String" Nullable="false" />
-    <Property Name="DeletedAt" Type="String" Nullable="false" />
+    <Property Name="CreateAt" Type="String" Nullable="false" />
+    <Property Name="UpdateAt" Type="String" Nullable="false" />
+    <Property Name="DeleteAt" Type="String" Nullable="false" />
     <Property Name="State" Type="Boolean" Nullable="false" />
-    <NavigationProperty Name="IdModule" Relationship="DbModel.ViewModule" FromRole="View" ToRole="Module" />
+    <NavigationProperty Name="RoleView" Relationship="DbModel.ViewRoleView" FromRole="View" ToRole="RoleView" />
+    <NavigationProperty Name="Module" Relationship="DbModel.ModuleView" FromRole="View" ToRole="Module" />
   </EntityType>
   <EntityType Name="Module">
     <Key>
@@ -119,33 +144,123 @@
     </Key>
     <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="Description" Type="String" Nullable="false" />
-    <Property Name="CreatedAt" Type="String" Nullable="false" />
-    <Property Name="UpdatedAt" Type="String" Nullable="false" />
-    <Property Name="DeletedAt" Type="String" Nullable="false" />
+    <Property Name="CreateAt" Type="String" Nullable="false" />
+    <Property Name="UpdateAt" Type="String" Nullable="false" />
+    <Property Name="DeleteAt" Type="String" Nullable="false" />
     <Property Name="State" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="View" Relationship="DbModel.ModuleView" FromRole="Module" ToRole="View" />
   </EntityType>
-  <Association Name="UserRoleUser">
-    <End Type="DbModel.UserRole" Role="UserRole" Multiplicity="*" />
-    <End Type="DbModel.User" Role="User" Multiplicity="1" />
+  <EntityType Name="Country">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" />
+    <Property Name="CreateAt" Type="String" Nullable="false" />
+    <Property Name="UpdateAt" Type="String" Nullable="false" />
+    <Property Name="DeleteAt" Type="String" Nullable="false" />
+    <Property Name="State" Type="String" Nullable="false" />
+  </EntityType>
+  <EntityType Name="State">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" />
+    <Property Name="CreateAt" Type="String" Nullable="false" />
+    <Property Name="UpdateAt" Type="String" Nullable="false" />
+    <Property Name="DeleteAt" Type="String" Nullable="false" />
+    <Property Name="state" Type="String" Nullable="false" />
+    <NavigationProperty Name="Countries" Relationship="DbModel.CountriesState" FromRole="State" ToRole="Countries" />
+    <Property Name="CountryId" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="City">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" />
+    <Property Name="CreateAt" Type="String" Nullable="false" />
+    <Property Name="UpdateAt" Type="String" Nullable="false" />
+    <Property Name="DeleteAt" Type="String" Nullable="false" />
+    <Property Name="State" Type="String" Nullable="false" />
+    <NavigationProperty Name="Person" Relationship="DbModel.CityPerson" FromRole="City" ToRole="Person" />
+    <NavigationProperty Name="States" Relationship="DbModel.CityState" FromRole="City" ToRole="State" />
+  </EntityType>
+  <Association Name="CountriesState">
+    <End Type="DbModel.Country" Role="Countries" Multiplicity="1" />
+    <End Type="DbModel.State" Role="State" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Countries">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="State">
+        <PropertyRef Name="CountryId" />
+      </Dependent>
+    </ReferentialConstraint>
   </Association>
-  <Association Name="UserRoleRole">
-    <End Type="DbModel.UserRole" Role="UserRole" Multiplicity="*" />
-    <End Type="DbModel.Role" Role="Role" Multiplicity="1" />
+  <Association Name="CityPerson">
+    <End Type="DbModel.City" Role="City" Multiplicity="1" />
+    <End Type="DbModel.Person" Role="Person" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="City">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Person">
+        <PropertyRef Name="IdCity" />
+      </Dependent>
+    </ReferentialConstraint>
   </Association>
-  <Association Name="UserPerson">
-    <End Type="DbModel.User" Role="User" Multiplicity="1" />
+  <Association Name="PersonUser">
     <End Type="DbModel.Person" Role="Person" Multiplicity="1" />
+    <End Type="DbModel.User" Role="User" Multiplicity="1" />
   </Association>
-  <Association Name="RoleViewRole">
-    <End Type="DbModel.RoleView" Role="RoleView" Multiplicity="*" />
+  <Association Name="UserUserRole">
+    <End Type="DbModel.User" Role="User" Multiplicity="1" />
+    <End Type="DbModel.UserRole" Role="UserRole" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="UserRole">
+        <PropertyRef Name="IdUser" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="RoleUserRole">
     <End Type="DbModel.Role" Role="Role" Multiplicity="1" />
+    <End Type="DbModel.UserRole" Role="UserRole" Multiplicity="*" />
   </Association>
-  <Association Name="RoleViewView">
+  <Association Name="RoleRoleView">
+    <End Type="DbModel.Role" Role="Role" Multiplicity="1" />
     <End Type="DbModel.RoleView" Role="RoleView" Multiplicity="*" />
-    <End Type="DbModel.View" Role="View" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Role">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="RoleView">
+        <PropertyRef Name="IdRole" />
+      </Dependent>
+    </ReferentialConstraint>
   </Association>
-  <Association Name="ViewModule">
-    <End Type="DbModel.View" Role="View" Multiplicity="*" />
+  <Association Name="ViewRoleView">
+    <End Type="DbModel.View" Role="View" Multiplicity="1" />
+    <End Type="DbModel.RoleView" Role="RoleView" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="View">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="RoleView">
+        <PropertyRef Name="IdView" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ModuleView">
     <End Type="DbModel.Module" Role="Module" Multiplicity="1" />
+    <End Type="DbModel.View" Role="View" Multiplicity="*" />
+  </Association>
+  <Association Name="CityState">
+    <End Type="DbModel.City" Role="City" Multiplicity="*" />
+    <End Type="DbModel.State" Role="State" Multiplicity="1" />
   </Association>
 </Schema>

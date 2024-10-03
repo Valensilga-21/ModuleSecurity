@@ -1,10 +1,5 @@
 ﻿using Entity.DTO;
 using Entity.Model.Security;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Data.Interfaces
 {
@@ -17,5 +12,6 @@ namespace Data.Interfaces
         public Task<View> GetByName(string name);
         public Task<View> Save(View entity);
         public Task Update(View entity);
+
     }
 }

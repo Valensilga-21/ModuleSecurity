@@ -1,5 +1,4 @@
 ﻿using Business.Interface;
-using Data.Implements;
 using Entity.DTO;
 using Entity.Model.Security;
 using Microsoft.AspNetCore.Mvc;
@@ -40,7 +39,7 @@ namespace Web.Controllers.Implements
         {
             if (entity == null)
             {
-                return BadRequest("Entity is null");
+                return BadRequest("La entidad es nula");
             }
 
             var result = await _cityBusiness.Save(entity);

@@ -25,9 +25,10 @@ namespace Bussines.Implements
             var userroleDtos = userroles.Select(userrole => new UserRoleDto
             {
                 Id = userrole.Id,
-                IdUser = userrole.IdUser,
-                IdRole = userrole.IdRole,
+                UserId = userrole.UserId,
+                RoleId = userrole.RoleId,
                 State = userrole.State,
+                Name = userrole.Name,
             });
             return userroleDtos;
         }
@@ -44,18 +45,20 @@ namespace Bussines.Implements
             UserRoleDto userroleDto = new UserRoleDto();
 
             userroleDto.Id = userrole.Id;
-            userroleDto.IdUser = userrole.IdUser;
-            userroleDto.IdRole = userrole.IdRole;
+            userroleDto.UserId = userrole.UserId;
+            userroleDto.RoleId = userrole.RoleId;
             userroleDto.State = userrole.State;
+            userroleDto.Name = userrole.Name;
             return userroleDto;
         }
 
         public UserRole mapData(UserRole userRole, UserRoleDto entity)
         {
             userRole.Id = entity.Id;
-            userRole.IdUser = entity.IdUser;
-            userRole.IdRole = entity.IdRole;
+            userRole.UserId = entity.UserId;
+            userRole.RoleId = entity.RoleId;
             userRole.State = entity.State;
+            userRole.Name = entity.Name;
             return userRole;
         }
 
@@ -63,7 +66,7 @@ namespace Bussines.Implements
         {
             UserRole userrole = new UserRole 
             {
-                CreatedAt = DateTime.Now.AddHours(-5)
+                CreateAt = DateTime.Now.AddHours(-5)
             };
             userrole = this.mapData(userrole, entity);
             userrole.User = null;
@@ -77,7 +80,7 @@ namespace Bussines.Implements
             UserRole userrole = await this.data.GetById(entity.Id);
             if (userrole == null)
             {
-                throw new Exception("Registro NO encontrado");
+                throw new Exception("Registro no encontrado");
             }
             userrole = this.mapData(userrole, entity);
             await this.data.Update(userrole);

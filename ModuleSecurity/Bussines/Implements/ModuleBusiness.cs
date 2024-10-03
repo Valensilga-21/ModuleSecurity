@@ -60,7 +60,7 @@ namespace Bussines.Implements
         {
             Module module = new Module 
             {
-                CreatedAt = DateTime.Now.AddHours(-5)
+                CreateAt = DateTime.Now.AddHours(-5)
             };
             
             module = this.mapData(module, entity);
@@ -73,7 +73,7 @@ namespace Bussines.Implements
             Module module = await this.data.GetById(entity.Id);
             if (module == null)
             {
-                throw new Exception("Registro NO encontrado");
+                throw new Exception("Registro no encontrado");
             }
             module = this.mapData(module, entity);
             await this.data.Update(module);

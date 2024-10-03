@@ -59,16 +59,16 @@ namespace Data.Implements
             try
             {
                 var sql = @"
-                    SELECT Id, CONCAT(Name) AS TextoMostrar
-                    FROM Cities
-                    WHERE Deleted_at IS NULL AND State = 1
-                    ORDER BY Id ASC";
+            SELECT Id, CONCAT(Name) AS TextoMostrar
+            FROM Cities
+            WHERE DeleteAt IS NULL AND State = 1
+            ORDER BY Id ASC";
 
                 return await this.context.QueryAsync<DataSelectDto>(sql);
             }
             catch (Exception ex)
             {
-                throw new Exception("Error al obtener la lista de selección de Cities", ex);
+                throw new Exception("Error al obtener la lista de Cities", ex);
             }
         }
 
@@ -81,7 +81,7 @@ namespace Data.Implements
             }
             catch (Exception ex)
             {
-                throw new Exception("Error al obtener todas las Cities", ex);
+                throw new Exception("Error al obtener las Cities", ex);
             }
         }
     }

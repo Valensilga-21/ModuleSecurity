@@ -1,32 +1,30 @@
 ﻿using Business.Interface;
-using Data.Implements;
 using Entity.DTO;
 using Entity.Model.Security;
 using Microsoft.AspNetCore.Mvc;
-using System.Diagnostics.Metrics;
 
 namespace Web.Controllers.Implements
 {
     [ApiController]
     [Route("[controller]")]
-    public class CountriesController : ControllerBase
+    public class CountryController : ControllerBase
     {
-        private readonly ICountriesBusiness _countriesBusiness;
+        private readonly ICountryBusiness _countriesBusiness;
 
-        public CountriesController(ICountriesBusiness countriesBusiness)
+        public CountryController(ICountryBusiness countriesBusiness)
         {
             _countriesBusiness = countriesBusiness;
         }
 
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<CountriesDto>>> GetAll()
+        public async Task<ActionResult<IEnumerable<CountryDto>>> GetAll()
         {
             var result = await _countriesBusiness.GetAll();
             return Ok(result);
         }
 
         [HttpGet("{id}")]
-        public async Task<ActionResult<CountriesDto>> GetById(int id)
+        public async Task<ActionResult<CountryDto>> GetById(int id)
         {
             var result = await _countriesBusiness.GetById(id);
             if (result == null)
@@ -37,11 +35,11 @@ namespace Web.Controllers.Implements
         }
 
         [HttpPost]
-        public async Task<ActionResult<Countries>> Save([FromBody] CountriesDto entity)
+        public async Task<ActionResult<Country>> Save([FromBody] CountryDto entity)
         {
             if (entity == null)
             {
-                return BadRequest("Entity is null");
+                return BadRequest("La entidad es nula");
             }
 
             var result = await _countriesBusiness.Save(entity);
@@ -49,7 +47,7 @@ namespace Web.Controllers.Implements
         }
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> Update([FromBody] CountriesDto entity)
+        public async Task<IActionResult> Update([FromBody] CountryDto entity)
         {
             if (entity == null || entity.Id == 0)
             {
